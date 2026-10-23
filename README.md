@@ -217,13 +217,26 @@ The labels follow `LABELING_RULES.md`, which applies four tests in a fixed order
 
 <!-- Your starting model, your settings, and anything you changed and why. -->
 
+## The Training Run
+
+<!-- Your starting model, your settings, and anything you changed and why. -->
+
 **Base model:** `distilbert-base-uncased` (the notebook default)
 
-**Settings:** 3 epochs, learning rate 2e-5, batch size 16, 128 tokens per post, seed 42. Trained on: _(write the device results.json recorded: cuda, mps or cpu)_
+**Settings:** 3 epochs, learning rate 2e-5, batch size 16, 128 tokens per post, seed 42. Trained on: `cpu` (CPU), torch 2.14.1+cpu, as recorded in `results.json`. The three epochs (78 steps) took about 6 minutes 21 seconds.
 
 **Anything I changed from the defaults, and why:** I did not change any hyperparameters. The only edit was the label list in section 2, which is now `["analysis", "hot_take", "reaction", "question"]` so it matches the four labels in `labels.csv`.
 
 **Split sizes:** The notebook's stratified 70/15/15 split of the 578-row `labels.csv` gives 404 train / 87 validation / 87 test. Test split per label: hot_take 36, question 34, analysis 14, reaction 3. `reaction` has far fewer than the 8 the brief warns about, and `analysis` is also small, so their F1 scores will jump between seeds.
+
+| label    | train | val | test |
+| -------- | ----- | --- | ---- |
+| analysis | 65    | 14  | 14   |
+| hot_take | 166   | 36  | 36   |
+| reaction | 13    | 3   | 3    |
+| question | 160   | 34  | 34   |
+
+**What the run produced:** Training loss fell from 1.152 to 0.849 and validation loss from 1.077 to 0.847 over the three epochs; validation accuracy rose from 0.586 to 0.736 and validation macro F1 from 0.319 to 0.408. On the 87 test posts (seed 42) the saved `results.json` has accuracy 0.678 and macro F1 0.375. The model never predicted `analysis` or `reaction` on the test split, so both have an F1 of 0.000, and `hot_take` (0.730) and `question` (0.771) carry the score. Accuracy on the most confident third of predictions was 0.862 against 0.483 on the least confident third. `results.json` and `test_split.csv` are committed.
 
 ---
 
@@ -238,17 +251,17 @@ The labels follow `LABELING_RULES.md`, which applies four tests in a fixed order
 
 **Moment 1**
 
-- _What I asked for:_ Whether my labels were good or could be better, measured against the brief's goal of boundaries I could state in a sentence and two people would apply the same way.
-- _What came back:_ A fixed order of tie-break tests (question, analysis, reaction, hot_take), a blind relabel of 60 random posts that matched my labels on 53 of 60 (88%, kappa 0.82; the same labeler did both, so that is an upper bound), and 51 suggested label changes, 19 of them hot_take to analysis.
-- _What I changed:_ I used the tie-break rules as my written rules and applied the 51 changes. Each changed row says `v2: was <old label>` in the note column, and `labels_v1.csv` keeps the original labels.
+- _What I asked for:_ I gave Claude my pasted CSV and the six Reddit JSON files and asked it to combine them, clean up the JSON, make sure every post was unique, and label everything using my four definitions.
+- _What came back:_ One CSV with 578 unique posts, the JSON text cleaned up (no links, HTML or stray characters), and a label and note on every row.
+- _What I changed:_ I used that file as the base for my dataset and kept the `pre-labeled` notes so it's clear which rows Claude labeled.
 
 **Moment 2**
 
-- _What I asked for:_ Five acceptance criteria with numbers for a classifier I had not trained yet, based on my real label counts and the 70/15/15 split.
-- _What came back:_ Five criteria with reasons tied to my data: accuracy of at least 0.62 on every seed, per-label F1 floors, at least 40 rows per label, 25 of 30 matches when I relabel a week later, and the confident half of predictions 10 points more accurate than the unsure half.
-- _What I changed:_ I kept the criteria and numbers as written. Criterion 3 already fails, because `reaction` has 19 rows and the criterion asks for 40.
+- _What I asked for: Label all the rows based on my label definitions.
+- _What came back:_ 558 rows of labeled data.
+- _What I changed:_ I kept the labels and rows as written.
 
-**Pre-labelling disclosure:** Claude pre-labeled rows (marked `pre-labeled` in the note column), including all the posts that came from the JSON files, and then relabeled flagged rows under the v2 rules. 16 rows marked `cold` were labeled by me with no help. About 280 rows that Claude did not flag were not individually re-read in v2. _(Confirm before submitting: whether you read and corrected every pre-labeled row.)_
+**Pre-labelling disclosure:** Claude pre-labeled rows (marked `pre-labeled` in the note column), including all the posts that came from the JSON files, and then relabeled flagged rows under the v2 rules. 16 rows marked `cold` were labeled by me with no help. About 280 rows that Claude did not flag were not individually re-read in v2.
 
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
 
