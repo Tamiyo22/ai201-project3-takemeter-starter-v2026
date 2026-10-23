@@ -217,10 +217,6 @@ The labels follow `LABELING_RULES.md`, which applies four tests in a fixed order
 
 <!-- Your starting model, your settings, and anything you changed and why. -->
 
-## The Training Run
-
-<!-- Your starting model, your settings, and anything you changed and why. -->
-
 **Base model:** `distilbert-base-uncased` (the notebook default)
 
 **Settings:** 3 epochs, learning rate 2e-5, batch size 16, 128 tokens per post, seed 42. Trained on: `cpu` (CPU), torch 2.14.1+cpu, as recorded in `results.json`. The three epochs (78 steps) took about 6 minutes 21 seconds.
@@ -257,7 +253,7 @@ The labels follow `LABELING_RULES.md`, which applies four tests in a fixed order
 
 **Moment 2**
 
-- _What I asked for: Label all the rows based on my label definitions.
+- \_What I asked for: Label all the rows based on my label definitions.
 - _What came back:_ 558 rows of labeled data.
 - _What I changed:_ I kept the labels and rows as written.
 
