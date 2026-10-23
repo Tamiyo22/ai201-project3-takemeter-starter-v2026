@@ -1,3 +1,58 @@
+ds.
+
+Accuracy: at least 0.62 on every seed, and at least 15 points above the majority baseline (hot_take at 41.2%). I set it below the 0.66 to 0.70 I expect, because it has to hold on all three seeds. That 0.66 to 0.70 is a guess based on the 88% blind agreement.
+Per-label F1 floors on every seed: question 0.75, hot_take 0.55, analysis 0.40, reaction 0.25. The smaller labels get looser floors, as the template suggests.
+Balance: every label has at least 40 rows, and no label is above 50%. The 50% ceiling passes today, but the 40-row floor fails, because reaction has 19 rows and I need about 21 more before the final training run.
+Consistency: relabel 30 random posts at least 7 days later and match my original on at least 25 of 30 (0.83). Your draft said you have no second labeler, so this tests me against myself. The 7-day wait keeps me from just remembering my answers, and 0.83 allows about 5 points of drift from the 88% same-day result.
+Confidence: on every seed, the most confident half of predictions is at least 10 points more accurate than the least confident half. With about 87 test rows, each half has about 43 predictions, so 10 points is about 4 predictions.
+
+I think reaction in criterion 2 is the one I’m most likely to miss. With only about 3 reaction rows in a test split today, its F1 can drop to 0 on a bad seed. Fixing criterion 3 first should help with that.
+
+The accuracy, F1 and confidence targets are my guesses and I can’t verify them until we train. Do you want the 40-row floor raised? Or should I pull more reaction posts from the JSON so criterion 3 passes?
+
+Files are in /home/claude/output:
+
+criteria.md
+Criteria
+Document·MD 
+
+I filled in the two blank sections of your README, The Training Run and How I Used AI, and left everything else in your text as written. I also fixed the formatting where tables and numbered lists had flattened when you pasted, and I added the Unit 6 sections from the starter below your text. Two places still need you: the device results.json recorded, and your confirmation of the pre-labelling line.
+
+The Training Run: It uses the default settings (distilbert-base-uncased, 3 epochs, learning rate 2e-5, batch size 16, seed 42). The only change from the defaults is that the label list now has all four labels. The split sizes are 404 train, 87 validation and 87 test. In the test split, reaction has 3 posts and analysis 14, so their scores will be jumpy.
+How I Used AI: Moment 1 is the label audit (51 changes). Moment 2 is the acceptance criteria. The pre-labelling disclosure says Claude pre-labeled the pre-labeled rows and all the JSON posts, and that 16 rows were labeled cold.
+Your numbers don’t match the file: Your Dataset section describes a 312-row set (144 hot_take, 121 question, 29 analysis, 18 reaction). The labels.csv I built, which the notebook will train on, has 578 rows (238, 228, 93, 19). Your Training Run split numbers use the 578-row file. If you meant to submit the 312-row set, tell me and I’ll change the split numbers. If you’re submitting the 578-row file, your Dataset section needs updating, and I can do that too.
+Your rule vs. my rules: Your README decides by the title (“the title is an open prompt, so question”). My LABELING_RULES.md uses a deletion test on the closing ask instead, and the 578-row labels.csv follows my rules. For example, a post titled “What is your opinion on this movie” that gives its own verdict would be question under yours and could be hot_take under mine. Your README and the labels should describe the same rule, so tell me which one you want and I’ll align the files.
+
+Files are in /home/claude/output/repo_files:
+
+README.md
+Readme
+Document·MD 
+
+fix it to your better version
+
+I rewrote the README so it matches the 578-row labels.csv and my rules, and sent it as README.md.
+
+What This Does: I kept your intro and the triage framing. I changed the reaction and question descriptions to the v2 wording, and I replaced the “left out on purpose” line with what was actually dropped (long lists or essays, news and announcements, posts with no text).
+Label Taxonomy: It now has my definitions and two real examples per label. The hardest boundary is question vs hot_take, decided by deleting the closing ask. If what’s left still works as a statement, it’s a hot_take; if it’s pointless without the ask, it’s a question.
+The Dataset: It has the 578-row counts, how the posts were labeled, and three hard cases from the data. I kept your line about Reddit’s 403 and saving the listings as .json.
+
+The Training Run and How I Used AI sections stay as I filled them. They already used the 578-row numbers, so they now agree with the rest.
+
+The old 312-row steps table and your title-decides rule are gone from the README. If you want them back as history, I can add them. The blank for the device results.json recorded and the pre-labelling confirmation are still yours to fill in.
+
+Files are in /home/claude/output/repo_files:
+
+README.md
+Readme
+Document·MD 
+
+put the readme here so I can just copy and paste
+
+Here’s the full README in a code block, so you can copy and paste it. The two blanks you still need to fill are the device results.json recorded and the pre-labelling confirmation.
+
+markdown
+
 # TakeMeter
 
 > ### 👋 Start here
@@ -41,152 +96,120 @@
 
 TakeMeter sorts posts from r/HorrorMovies, a movie-discussion subreddit with about 220,000 members, into four types:
 
-Label
-analysis argues a point and backs it with something checkable
-hot_take gives a verdict or ranking with no checkable support
-reaction describes how the poster felt, without arguing a claim
-question asks the community something
+| Label      | What it means                                                                                               |
+| ---------- | ----------------------------------------------------------------------------------------------------------- |
+| `analysis` | argues a point and backs it with something checkable                                                        |
+| `hot_take` | gives a verdict or ranking with no checkable support                                                        |
+| `reaction` | voices how the poster felt right after watching or hearing something, without arguing a claim               |
+| `question` | exists to get something back from the community: an answer, an identification, a recommendation or opinions |
 
 It is meant as a first-pass sorter, so someone skimming the sub can find the posts worth reading. A wrong label costs a few seconds of skim time, so the goal is useful for triage, not reliable enough to act on automatically.
 
-Posts that aren't opinion or discussion (news, fan art, personal shares, moderator posts) were left out on purpose, so the model only sees the four types above.
+Very long lists or essays, news and announcements, and posts with no text were left out on purpose, so the model only sees the four types above.
 
 ---
 
 ## Label Taxonomy
 
-<!-- Each label: a one-sentence definition and two real examples from your
-     reading. Then your decision rule for the hardest boundary.
-
-     The decision rule is worth a point on its own and it's the thing most
-     people leave out. Every taxonomy has a hardest boundary. Name yours. -->
-
 ### `analysis`
 
-**Definition:**
-Makes a point and backs it with something a stranger could check: a number, a timestamp, or a description of what a scene or technique does. Naming a film or an actor is not enough.
+**Definition:** Makes a claim and supports it with a specific, checkable detail (a named scene, line, credit, date, number, or a comparison to a named work) offered as the reason.
 
 **Example 1:**
 
-> What makes it so disturbing is how calmly he approaches the situation, almost as if he's comparing their grades rather than deciding who should live or die. No violence, no screaming.
+> Hokum has some of the most unique scares I've seen from a horror movie in a while. […] I hate the overuse of jumpscares in horror movies atm, so Hokum's slow, silent panning to a particular scare was very exciting, like when Ohm was trying to turn off the tv when a figure appears in the reflection after it turns off. […] Same with the beginning scene with the girl on the stairs which I thought effectively set the tone for the rest of the film.
 
 **Example 2:**
 
-> Coraline has to agree to getting button eyes, while Bella has to agree to letting the Other Mommy enter her heart.
+> Finally watched Obsession! […] Nothing has disturbed me as deeply as this film. The not so subtle subtext of date rape and Bear's predatory adoration is deeply unsettling […] One of the creepiest scene to me in horror filmography is the "black maid" Georgina crying and saying "No" on repeat in Get Out that's basically the whole shtick with Nikki.
 
 ### `hot_take`
 
-**Definition:**
-A ranking, recommendation or quality verdict about a film (best, masterpiece, boring, overrated, favorite, must-watch) with no checkable support, only adjectives or feelings.
+**Definition:** A confident verdict, ranking or recommendation with no support offered. It might be true, but it isn't argued.
 
 **Example 1:**
 
-> Misery is a Masterpiece
+> Martyrs is one of the best horror movies ever made. Martyr's violence and philosophical questions long stayed with me after the credits rolled. Despite being so unforgiving, it has something that's so rare to find in other movies, in a sense it's beautiful. Don't even get me started on that ending..
 
 **Example 2:**
 
-> Martyrs is one of the best horror movies ever made
+> BONE TOMAHAWK (2015). It's AWESOME. It may look like just a western from a distance, but damn the horror vibes are strong. Disturbing, but well worth the ride.
 
 ### `reaction`
 
-**Definition:**
-The post is mainly about the poster's own state or experience (scared, uncomfortable, couldn't sleep, cried), without arguing a claim about the film.
+**Definition:** An immediate response to something that just happened, mostly feeling and not a verdict. It needs a timing cue ("just watched", "tonight") and no ranking ("best of the decade" makes it a `hot_take`).
 
 **Example 1:**
 
-> It's about 10 minutes in and I'm already very uncomfortable.
+> Watching Creep (2014) for the first time. It's about 10 minutes in and I'm already very uncomfortable. 😆
 
 **Example 2:**
 
-> I don’t know if this is strictly horror, but it scared me witless and I couldn’t shake it off for ages.
+> Goodnight 💤 from Demon Mom in Mr Sandman 2024 💀. Talk about a Creepy possessed Demon. Not the best idea to watch this flick in the dark right before bed. Unless you want nightmares. This movie messed me up ..I Watched Mr sandman 2024 on Tubi n creeped me out bigtime
 
 ### `question`
 
-**Definition:**
-The main purpose of the post is to ask the community something: for opinions, recommendations, or help identifying a film.
+**Definition:** The post exists to get something back from readers: an identification, a recommendation, an answer, or their opinions.
 
 **Example 1:**
 
-> Thoughts on Sinister?
+> am i reaching or does the colour red symbolize something in annabelle creation? the red glass, red record player, annabelle's ribbon etc.
 
 **Example 2:**
 
-> What’s a movie that genuinely terrified you as a kid, even though it wasn’t supposed to be a horror movie?
+> What horror movie genuinely scared you as a kid and still haunts you today? I'm curious to hear everyone's personal horror stories. Which movie gave you nightmares as a kid and still makes you uneasy now? Was it the story, a character, or just the atmosphere?
 
 ### The hardest boundary
 
-**Which two labels:**
-hot_take and question
+**Which two labels:** `question` vs `hot_take`. Many posts state a strong opinion and then end with "Anyone else?" or "Thoughts?".
 
-Boundary Rows flagged
-hot_take / question 25
-analysis / hot_take 20
-hot_take / reaction 17
-
-**The decision rule I used every time:**
-1.Read the title first.
-2.If the title is an open prompt with no verdict ("Thoughts on Sinister?", "What is your opinion on this movie"), the post is question, even when the body gives the poster's own opinion.
-3.If the title itself holds a verdict, even in question form ("Is X the best…?", "Am I the only one who thinks X is boring?"), the post is hot_take.
-4.One exception: a long body that argues a point with described specifics is analysis, because that check comes before the question check.
+**The decision rule I used every time:** Delete the closing ask. If what's left still works as a statement, the ask was tacked on and the post is a `hot_take` (or whichever label the rest earns). If what's left is pointless without the ask ("Has anyone seen Good Boy?"), the ask was the point and it's a `question`. Rhetorical questions ("Can we all agree X is the best?") don't count as asks. The full ordered tests (question, analysis, reaction, hot_take) are in `LABELING_RULES.md`.
 
 ---
 
 ## The Dataset
 
-**Where the posts came from:**
-r/HorrorMovies, collected in October 2026. Reddit blocks scripts with an HTTP 403, so I opened the listing pages in my browser and saved them as .json. I used three pages of the sub's top posts of the past year (300 posts) and one page of its newest posts (100 posts). Usernames were left out of the dataset.
+**Where the posts came from:** r/HorrorMovies, collected in October 2026. Reddit blocks scripts with an HTTP 403, so I opened listing pages in my browser and saved them as .json. 308 posts were pasted in as text and 270 more came from six of those JSON listing files (404 listings, 310 unique post ids). Each post's title and body are joined into one line, with HTML entities, URLs and zero-width characters cleaned up. Duplicates were removed by post id, exact text, and near-duplicate text. 21 JSON posts were dropped (long lists or essays, news and announcements, posts with no text).
 
-**How I labelled them:**
-
-Step Removed Remaining
-Collected 400
-Mod post, game thread, release list, near-duplicate, and posts under 10 words 25 375
-Duplicates between pages 7 368
-Left out as not opinion or discussion (news, personal shares, series templates, posts that need an image or video, daily threads) 56 312
+**How I labelled them:** 16 rows are marked `cold` in the note column (labeled by me with no help). `pre-labeled` rows (about 292) were labeled first by Claude from my four definitions. After that I asked whether the labels were good, and Claude wrote tie-break rules (`LABELING_RULES.md`), blind-relabeled a random 60 rows (88% agreement, kappa 0.82, same labeler so an upper bound), and re-read about 290 flagged rows, changing 51 labels. Every changed row says `v2: was <old label>` in its note, and `labels_v1.csv` keeps the first version. About 280 unflagged rows (mostly short hot_takes and clear questions) were not individually re-read in v2.
 
 **Counts per label:**
 
-Counts per label
-Label Count Share
-hot_take 144 46.2%
-question 121 38.8%
-analysis 29 9.3%
-reaction 18 5.8%
-Total 312 100%
+| Label     | Count | Share |
+| --------- | ----- | ----- |
+| hot_take  | 238   | 41.2% |
+| question  | 228   | 39.4% |
+| analysis  | 93    | 16.1% |
+| reaction  | 19    | 3.3%  |
+| **Total** | 578   | 100%  |
 
-analysis and reaction are small because most posts in this sub are verdicts and questions, and my definitions are strict about what counts as support and as a feelings-only post. These counts are from the combined file before any changes during review.
+The labels follow `LABELING_RULES.md`, which applies four tests in a fixed order (question, analysis, reaction, hot_take). `reaction` is thin (19 rows, about 3 land in each test split), so its score will jump between seeds. It also fails my own criterion 3 (at least 40 rows per label).
 
 **Three hard cases**
 
-<!-- Any post that made you pause: what it was, which two labels it could have
-     been, and what you chose. These are worth more than the easy 190. -->
-
 **1.**
 
-> _The post:_ What is your opinion on this movie
-> "Midsommar is a brilliantly executed psychological horror film, and personally, I found its approach incredibly refreshing and different from what I usually expect from a horror movie."
+> _The post:_ "This is the scariest movie I've ever seen. I haven't slept for days, I watched this movie for the first time a few days ago 😭 […] I flew like Usain Bolt to turn the lights on after the movie was done, and slept with all the lights on in the house."
 >
-> _Could have been:_ hot_take or question
+> _Could have been:_ `reaction` vs `hot_take`
 >
-> _I chose, because:_ I chose question, because: the title is an open prompt with no verdict, and my rule is that the title decides, even when the body states a clear opinion.
+> _I chose:_ `hot_take`, because the title is a superlative verdict ("scariest ever") and the "few days ago" timing means it isn't an immediate response, even though the feeling is strong.
 
 **2.**
 
-> *The post:*Why are so many horror protagonists aggressively unlikeable?
-> "Hokum was probably the most aggregious recent case of this where the main man was so passive aggressive that I instantly stopped caring about him…", followed by a comparison with Lake Mungo and REC.
+> _The post:_ "Rewatched this classic last night. Any fright night fans here? This is my favorite horror classic of all time […] Is it 'scary' compared to today's horror movies?, No. But it sure is an amazing classic."
 >
-> *Could have been:*question or analysis
+> _Could have been:_ `question` vs `hot_take`
 >
-> *I chose, because:*I chose analysis, because: the body argues a claim and supports it with named films and a described contrast, and my rule checks for support before it checks for a question.
+> _I chose:_ `hot_take`, because after deleting "Any fright night fans here?" the rest still stands as a verdict. v1 had it as `question`.
 
 **3.**
 
-> _The post:_ finally watched The Coffee Table
-> "wow. this was one of those movies where I had my hand over my mouth and was sitting on the edge of my seat with anxiety and dread. a masterfully bleak film."
+> _The post:_ "The Descent (2005) is still a masterclass in tension. […] They used such a limited palette, but it looks incredible. It's rare to find a horror movie with an all-female cast that feels this gritty and grounded without falling into tropes."
 >
-> *Could have been:*reaction or hot_take
+> _Could have been:_ `hot_take` vs `analysis`
 >
-> *I chose, because:*I chose hot_take, because: under my original rule, a single verdict word ("masterfully bleak") makes the post a hot_take, even though most of it describes the poster's own state. This rule is why reaction is my smallest label.
+> _I chose:_ `hot_take`, because the details (limited palette, all-female cast) are mentioned but never used as the reason for the claim; the support is adjectives ("gritty", "grounded").
 
 ---
 
@@ -194,15 +217,13 @@ analysis and reaction are small because most posts in this sub are verdicts and 
 
 <!-- Your starting model, your settings, and anything you changed and why. -->
 
-**Base model:**
+**Base model:** `distilbert-base-uncased` (the notebook default)
 
-**Settings:** <!-- epochs, learning rate, batch size, seed -->
+**Settings:** 3 epochs, learning rate 2e-5, batch size 16, 128 tokens per post, seed 42. Trained on: _(write the device results.json recorded: cuda, mps or cpu)_
 
-**Anything I changed from the defaults, and why:**
+**Anything I changed from the defaults, and why:** I did not change any hyperparameters. The only edit was the label list in section 2, which is now `["analysis", "hot_take", "reaction", "question"]` so it matches the four labels in `labels.csv`.
 
-**Split sizes:** <!-- train / val / test, and per-label counts in the test
-split. If a label had fewer than about 8 in test, say so — it explains a lot
-of next unit's variance. -->
+**Split sizes:** The notebook's stratified 70/15/15 split of the 578-row `labels.csv` gives 404 train / 87 validation / 87 test. Test split per label: hot_take 36, question 34, analysis 14, reaction 3. `reaction` has far fewer than the 8 the brief warns about, and `analysis` is also small, so their F1 scores will jump between seeds.
 
 ---
 
@@ -217,17 +238,17 @@ of next unit's variance. -->
 
 **Moment 1**
 
-- _What I asked for:_
-- _What came back:_
-- _What I changed:_
+- _What I asked for:_ Whether my labels were good or could be better, measured against the brief's goal of boundaries I could state in a sentence and two people would apply the same way.
+- _What came back:_ A fixed order of tie-break tests (question, analysis, reaction, hot_take), a blind relabel of 60 random posts that matched my labels on 53 of 60 (88%, kappa 0.82; the same labeler did both, so that is an upper bound), and 51 suggested label changes, 19 of them hot_take to analysis.
+- _What I changed:_ I used the tie-break rules as my written rules and applied the 51 changes. Each changed row says `v2: was <old label>` in the note column, and `labels_v1.csv` keeps the original labels.
 
 **Moment 2**
 
-- _What I asked for:_
-- _What came back:_
-- _What I changed:_
+- _What I asked for:_ Five acceptance criteria with numbers for a classifier I had not trained yet, based on my real label counts and the 70/15/15 split.
+- _What came back:_ Five criteria with reasons tied to my data: accuracy of at least 0.62 on every seed, per-label F1 floors, at least 40 rows per label, 25 of 30 matches when I relabel a week later, and the confident half of predictions 10 points more accurate than the unsure half.
+- _What I changed:_ I kept the criteria and numbers as written. Criterion 3 already fails, because `reaction` has 19 rows and the criterion asks for 40.
 
-**Pre-labelling disclosure:**
+**Pre-labelling disclosure:** Claude pre-labeled rows (marked `pre-labeled` in the note column), including all the posts that came from the JSON files, and then relabeled flagged rows under the v2 rules. 16 rows marked `cold` were labeled by me with no help. About 280 rows that Claude did not flag were not individually re-read in v2. _(Confirm before submitting: whether you read and corrected every pre-labeled row.)_
 
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
 

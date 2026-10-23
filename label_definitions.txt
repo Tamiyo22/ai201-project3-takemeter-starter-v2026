@@ -5,6 +5,8 @@
 #
 # Delete the examples below and put yours in.
 
-analysis: makes an argument backed by a specific, checkable fact
-hot_take: a confident claim with no support offered
-reaction: an immediate response to something that just happened
+analysis: makes an argument backed by a specific, checkable fact (a named scene, line, credit, date, number, quote, or comparison to a named work) offered as the reason for the claim
+hot_take: a confident claim, verdict or ranking with no support offered
+reaction: an immediate response to something that just happened, mostly feeling, written right after watching or hearing it
+question: asks readers for specific information, a movie to identify or recommend, or their thoughts
+
