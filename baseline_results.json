@@ -3,34 +3,34 @@
   "n": 87,
   "seed": 42,
   "held_out": true,
-  "used_definitions": true,
+  "used_definitions": false,
   "scores": {
     "n": 87,
-    "accuracy": 0.2988505747126437,
-    "f1_macro": 0.2548567870485679,
+    "accuracy": 0.5172413793103449,
+    "f1_macro": 0.3745147711232103,
     "per_label": {
       "analysis": {
-        "precision": 0.1694915254237288,
-        "recall": 0.7142857142857143,
-        "f1": 0.273972602739726,
+        "precision": 0.5,
+        "recall": 0.07142857142857142,
+        "f1": 0.125,
         "support": 14
       },
       "hot_take": {
-        "precision": 0.0,
-        "recall": 0.0,
-        "f1": 0.0,
+        "precision": 0.7142857142857143,
+        "recall": 0.4166666666666667,
+        "f1": 0.5263157894736842,
         "support": 36
       },
       "question": {
-        "precision": 0.7142857142857143,
-        "recall": 0.4411764705882353,
-        "f1": 0.5454545454545455,
+        "precision": 0.7368421052631579,
+        "recall": 0.8235294117647058,
+        "f1": 0.7777777777777778,
         "support": 34
       },
       "reaction": {
-        "precision": 0.14285714285714285,
+        "precision": 0.038461538461538464,
         "recall": 0.3333333333333333,
-        "f1": 0.2,
+        "f1": 0.06896551724137931,
         "support": 3
       }
     }
@@ -39,22 +39,22 @@
     {
       "text": "Extream French horror movie High Tension! Have you experienced this extreme gore flick from 2003? High Tension AKA Switchblade Romance is a very disturbing french horror film about two friends who find themselves in the middle of a cat and mouse game with a sadistic serial killer. Directed by Alexander Aja and stars C\u00e9cile de France, Ma\u00efwenn and Philippe Nahon this one isn't for the faint of heart! While Heavily inspired by Dean Koontz's Intensity (1997 directed by Yves Simoneau) this film takes things in a very different direction however, including a wild twist ending. If you're after a disturbing and strange film with raw acting from its 3 leads give it a watch!",
       "gold": "hot_take",
-      "predicted": "analysis"
+      "predicted": "question"
     },
     {
       "text": "Johnny Depp Nightmare... Again. Legit nightmare for JD? Now I have to wonder whether Ti West deliberately staged that scene as a nod to Johnny's first movie. Because if he did, he planted a little Easter egg for people exactly like me. All in fun............ 42 years of cinema and some scenes never escape. LOL",
       "gold": "reaction",
-      "predicted": "analysis"
+      "predicted": "question"
     },
     {
       "text": "Lake Mungo Is So Good... And I'm Tired of Pretending It's Not. (Lake Mungo Spoilers) Okay. Lake Mungo. God this movie is so good. It's a mix of horror and dread, Fear and Sadness. Honestly love this movie and I don't understand why people hate it online. Alice Palmer's sudden death is definite;y a shock, but the credits of this movie are so much more shocking. Like I swear 99% of the people who hate this movie didn't watch the credits where Alice's ghost is literally seen in all of the pictures and videos we had seen during the movie, and we didnt see her once? The story itself is incredible, it delves into grief and the fear of being forgotten. As for the cinematography, Joel Anderson did a great job directing this film. And the fact that he only ever directed Lake Mungo then he disappeared off the face of the earth? dang. Tell me what you think in the comments.",
       "gold": "hot_take",
-      "predicted": "analysis"
+      "predicted": "reaction"
     },
     {
       "text": "The Snow Woman (1968). A master sculptor and his apprentice are trapped in a bad snow storm after finding a special tree for carving a statue for the local temple. Finding refuge in an abandoned hut they celebrate their luck in finding the tree but soon they are visited by the Snow Witch who freezes the sculptor to death but takes pity on the apprentice. He must promise to never speak of this or she\u2019ll return and kill him. Beautiful fantasy horror, comes from the legend of \"Yuki-onna\" that is well known in Japan. Old tales about yuki-onna are mostly stories of sorrow, and it is said that these tales started from when people who have lived gloomy lives, such as childless old couples or single men in mountain villages, would hear the sound of a blizzard knocking on their shutter door and fantasize that the thing that they longed for has come. It is said that after that, they would live in happiness with what they longed for in a fantasy as fleeting as snow. In many stories, Yuki-onna appears to travelers trapped in snowstorms and uses her icy breath to leave them as frost-coated corpses. Yuki-onna also appears in Kwaidan (1964) directed by Masaki Kobayashi, and Dreams (1990) directed by Akira Kurosawa.",
       "gold": "hot_take",
-      "predicted": "analysis"
+      "predicted": "hot_take"
     },
     {
       "text": "The Witch? (And Similar Movies) Hey folks, What\u2019s the verdict on The Witch (or The VVitch I guess if we wanna get into that)? I\u2019ve seen many horror fans love it while more casual moviegoers hated it, and I\u2019m wondering if its worth the watch. I watched Hereditary yesterday and it was quite good (particularly the cinematography), but a little more conventional than I expected. I\u2019m a big fan of artistic films and have read up on The Witch enough to understand that its artistry and focus on atmosphere rather than outright horrific imagery may be why so many casual horror fans didn\u2019t care for it. So, what do you people on this wonderful sub think, or is there a better place to ask\u2014is The Witch overrated or was it really a groundbreaking horror film? Are there any other films like it (along with Hereditary, A Quite Place, and The Babadook) that I might enjoy? I\u2019m looking for stuff preferably more visually frightening than The Babadook, but a little less conventional than Hereditary.",
@@ -69,22 +69,22 @@
     {
       "text": "Just Before Dawn. As a serial killer/slasher flick, this one has always been a little eerie to me. Maybe its the music. Maybe Its the atmosphere of the woods (think Deliverance) or maybe the somewhat odd ending. Not really sure and it has its flaws but I have always liked this one.",
       "gold": "hot_take",
-      "predicted": "analysis"
+      "predicted": "question"
     },
     {
       "text": "John Carpenter Denies All Fan Theories For THE THING Ending. John Carpenter tells Reece Feldman in latest interview that none of the current fan theories for the ending are in fact correct. He denies the visual breath theory or gasoline dring theory and states that he knows it but nobody else, and that its all in the movie. After watching this interview, and not knowing much about the earlier theories, I decided to take another look at the film myself and try to come up with my own theory. Looking for something that is explicitly \"Right in the movie\" And I think I have found something that no other person has pointed out before. There's one scene about an hour into the movie where John shows us exactly who is infected. And Childs is already one of them. After MacReady gets the gun, about an hour into the film, they have a conversation around the campfire. During this scene, everybody is wearing safety goggles. But three people do not have them equipped. Palmer (confirmed infected) Norris (confirmed infected) Childs And I know what everybody is going to say: Childs was the last one tested, so he's a confirmed human. But the alien is undoubtedly a incredibly smart being. It can mimic a human perfectly even speaking lines that it previously would. Do we not think that it can learn from its previous \"mistakes\" and resist the urge to attack when harmed. One could even interpret Childs' reaction to his own blood test as him actually feeling the pain that his blood feels. Would genuienly like to know what people think about this!",
       "gold": "analysis",
-      "predicted": "analysis"
+      "predicted": "hot_take"
     },
     {
       "text": "Late Night With the Devil (2023). Late Night with the Devil is a clever, slow-burning horror film that mixes found-footage style with 1970s late-night TV nostalgia. The movie follows a live talk show broadcast that spirals into something deeply unsettling, blending psychological tension, satire, and supernatural horror without relying too heavily on jump scares",
       "gold": "hot_take",
-      "predicted": "analysis"
+      "predicted": "hot_take"
     },
     {
       "text": "Silent Night, Deadly Night. I had little to no expectations with this movie. But I was blown away. I just came home from the theatre. This movie was a blast. I love what they did with it. They respected the original, there even was a nod to the sequel. The acting was solid, the cinematography as well. I did not care for Rohan in Halloween Ends, but he won me over in this one. Do yourself a favor and go see this asap!",
       "gold": "analysis",
-      "predicted": "analysis"
+      "predicted": "reaction"
     },
     {
       "text": "Buddy (spoiler) I just watched this this morning when I couldn't sleep and I have to say, it was much better than I thought it was going to be! Has anyone seen this? Thoughts? I actually thought it was pretty good after thinking how dumb it looked from the preview. The way they used the TV as a portal to an alternate world run by a demon posing as a kids tv character was actually pretty entertaining. Him using the kids love energy on a cycle to keep himself regenerating was really different. I honestly thought it was great, but I also like the weird shit everyone seems to hate, anyways, check out out if you want to see something different.",
@@ -94,52 +94,52 @@
     {
       "text": "Watching this classic today, of course it's cheesy and the OG is better, but I love Chris Kattan in this movie.",
       "gold": "hot_take",
-      "predicted": "analysis"
+      "predicted": "reaction"
     },
     {
       "text": "Who remembers this? I remember thinking this film was pretty good back in 2001 when I watched it, only watched it once.",
       "gold": "question",
-      "predicted": "analysis"
+      "predicted": "question"
     },
     {
       "text": "Anybody seen Bad Blood? (2016). It\u2019s on Tubi. It\u2019s about a girl that gets infected with some kind of frog mutation as a result of some kind of experiment gone wrong. It\u2019s like a werewolf movie but with a frog creature instead. It\u2019s a really cool movie and I\u2019m just curious if anybody else out there was as into as I was.",
       "gold": "question",
-      "predicted": "analysis"
+      "predicted": "question"
     },
     {
       "text": "Suspiria (2018). Re watched Suspiria remake, I think It was really damn good horror, an enthralling performance from Dakota Johnson. Her red hair was just striking a fantastic choice. Great support cast Mia Goth, Tilda Swinton, Chloe Grace Moretz Along with TCM 2003, this is another fantastic remake / reimagining.",
       "gold": "hot_take",
-      "predicted": "analysis"
+      "predicted": "reaction"
     },
     {
       "text": "The Descent (2005). Rewatched this horror masterpiece last night. The Descent still holds up big time. From the amazing sets, creepy creature design, to the awesome action, physical performances, and important emotional themes, this movie does it all right. For those of you who have seen The Descent, do you love it as much as me, and do you prefer the American or the European ending?",
       "gold": "hot_take",
-      "predicted": "analysis"
+      "predicted": "question"
     },
     {
       "text": "If you could change the ending of High Tension, how would you do it? The ending of High Tension was... controversial, to say the least, as many of you may know. Despite ample foreshadowing (so much foreshadowing, in fact, that they may as well have revealed it well before the climax), the twist is still completely out of left field and creates a number of plot holes, most glaringly, the fact that the killer was spotted having sex with a severed head in his truck just outside the cornfield at the start. To be perfectly honest, I would prefer a standard \u2014 albeit gory \u2014 slasher over the mess that ending caused. I don't blame Aja for the ending, really, because he was forced into it by the studio, who wanted a twist ending. He just went with probably the most lazy, overused ending he could. But I have my own, partially fleshed-out idea for an ending. The climax would begin at the same point, where Marie follows the killer's truck after nearly losing him. Except she actually came prepared and loaded the gun beforehand. This would fit in with her character better, since she used quick thinking earlier to rearrange the bedroom so it would look like nobody's staying there. When the killer spots her, she fires a few rounds, managing to hit his tires and forcing him off the dirt road. By pure slasher movie logic, he survives and gets out of the truck, while Marie runs off to the woods to look for Alex and to finish off the killer (hey, this is the same movie where a guy gets decapitated by a bookshelf, okay? I'm allowed to use some artistic license), who ambushes her the same way as before. The fight that ensues is the exact same as in the original, minus Marie's guttural scream, which I'll be saving for... She searches the killer's body, takes his keys and unlocks the back of the truck, hoping to find Alex alive and well. Unfortunately, Alex is either bleeding heavily from blunt force trauma and dies shortly after Marie finds her, or is already dead, which leads to the aforementioned scream, followed by Marie whispering her mantra, \"I won't let anyone come between us anymore\" over and over again. Cut back to the hospital, end movie. Additionally, I would like to include a little more development towards Marie and Alex's relationship. It's made clear throughout that Marie is a barely closeted lesbian with strong, unreciprocated feelings for Alex, maybe even being protective of her to an unhealthy extent. It would make her mantra, plus all the unresolved sexual tension between the two make just as much sense \u2014 if not more \u2014 as it did in the original ending. The split personality imagery and foreshadowing would be toned down to be either red herrings, like having Marie question her sanity, or removed completely, and the killer would ultimately serve as being a sort of shadow to Marie, killing women and their families out of a perverted obsession and a need to covet the women for himself. What do you think?",
       "gold": "question",
-      "predicted": "analysis"
+      "predicted": "question"
     },
     {
       "text": "BUDDY (2026) \ud83e\udd84 US Rental on Prime and AppleTV \ud83d\udd2a \ud83e\ude78 A group of children become trapped in the disturbing world of a seemingly lovable children's television character (an Orange Unicorn) named Buddy. What initially appears to be a colorful, cheerful environment filled with songs, games, and friendly characters gradually becomes a terrifying nightmare. This was dark fun along the lines of \u201cMonkey\u2019s Magic Merry-Go-Round\u201d and \u201cDon\u2019t Hug Me I\u2019m Scared\u201d (also the puppet segment from \u201cV/H/S/Mixtape\u201d). There is some lore to the story that kind of reminds me of some horror/survival video games and analog horror. Fun, dark, unhinged movie that was pretty entertaining if you like demented kid\u2019s shows!",
       "gold": "hot_take",
-      "predicted": "analysis"
+      "predicted": "reaction"
     },
     {
       "text": "I maybe in the minority on this but I love this movie! If it\u2019s creepy and fun, I love it!!",
       "gold": "hot_take",
-      "predicted": "analysis"
+      "predicted": "reaction"
     },
     {
       "text": "I really do believe these are the four best horror actress performances of the last 15 years",
       "gold": "hot_take",
-      "predicted": "analysis"
+      "predicted": "hot_take"
     },
     {
       "text": "Help with movie title.. SOLVED: ANTRUM I tried chatgpt to figure it out but the robot is being silly today.. It's a fake documentary style opening movie. They said people always die after watching it. Then they do a count down to start said movie. It's about a girl and her brother in the 70s or so who go into the woods to try to get their dead dog back. It's very Dantes inferno symbolic. Then the \"movie\" ends and then the actual film closes with more fake documentary style content. They said the whole thing was designed at wierd frame rates and music hz to make you feel unsettled. In the press tour the director kept to the gimmick that oo0o0o0 if you watch it you'll die.",
       "gold": "question",
-      "predicted": "analysis"
+      "predicted": "reaction"
     },
     {
       "text": "Sinister isn\u2019t talked about enough. i really enjoy this movie i have watched it twice haven\u2019t seen much discussion about it what do you guys think",
@@ -149,17 +149,17 @@
     {
       "text": "Happy October, the season is off to a great start! Incident In A Ghostland, Hereditary, Phenomenon/Creepers, The Void, A Nightmare On Elm Street, and some Tales From The Crypt! Probably my 4th, or 3rd, watch of everything except ANOE; I loved that series when I was growing up.",
       "gold": "reaction",
-      "predicted": "analysis"
+      "predicted": "hot_take"
     },
     {
       "text": "Just over halfway through the year and I think The Bone Temple is the best horror of the year SO FAR. Curious to see what October holds for us and really looking forward to Werewulf by Robert Eggers. That's the one horror movie I could see topping this one Ranking for the year: The Bone Temple Hokum Send Help The Backrooms Obsession Undertone Leviticus Ready or Not 2 Passenger Scream 7 (A mile high pile of shit) The Last House Let me know if there are any horror releases this year that I missed out on",
       "gold": "hot_take",
-      "predicted": "analysis"
+      "predicted": "hot_take"
     },
     {
       "text": "Hot take - I enjoy this film a lot. Nightmare on Elm street 2010 remake: I know it\u2019s not a very popular film among horror fans and especially Elm street fans but this was the first film that got me into Horror so it holds a special place in my heart, I think it\u2019s over-hated and actually an enjoyable watch, of course I don\u2019t think it\u2019s a masterpiece by any stretch of the imagination however I think it\u2019s fun and entertaining for what it is, let me know your thoughts.",
       "gold": "hot_take",
-      "predicted": "question"
+      "predicted": "reaction"
     },
     {
       "text": "Help me remember this movie I saw as a kid in the mid-2000s \u2014 an evil entity couldn't enter a house because of red markings on a white cloth. I'm trying to identify a horror movie I watched when I was a kid, probably sometime in the mid-2000s. I don't know exactly when the movie itself was released, since I could have watched an older movie on TV. I remember one particular scene very vividly, although some of the details may be distorted because I was very young. The antagonist was a humanoid-looking evil creature/killer who was apparently preying on people in a particular town or community. I remember him as being very creepy and supernatural rather than a normal human killer. The strongest scene I remember: - There were people inside a house. - The antagonist was outside, looking through a window at the people inside. - He wanted to get into the house but couldn't cross the doorway because something had been placed over/on the doorway. - I remember this as a white cloth/fabric hanging across or around the doorway, with something red painted/marked on it. - I'm not sure what the red marking actually was. It could have been red paint, blood, a cross, a religious symbol, or some kind of protective marking/talisman. - The antagonist seemed to be unable to enter because of this protection. - I also have a very strong but uncertain memory involving a horse. I vaguely remember the antagonist using or riding a horse to somehow get inside the house, or somehow bypassing the protection. I'm not completely sure about this part, so please don't rely on the horse if nothing comes to mind. The movie was very scary and creepy, especially to me as a child. I remember the antagonist watching the people from outside the window while being unable to enter. I do NOT mean The Village (2004). I've seen it and I'm 100% certain that's not the movie. I also considered Demon Knight, but I'm not convinced that's it either.",
@@ -169,7 +169,7 @@
     {
       "text": "What an insane time to be a fan of horror cinema. From Obsession to Backrooms to Weapons, Barbarian, Bring Her Back, Hokum, Together, etc. We are actually drowning in it. There is only more to come, with things like Bill Hader\u2019s directorial debut **They Know** or David Robert Mitchell\u2019s long awaited sequel to **It Follows \u201cThey Follow\u201d** \u2014 anyone that tries to convince you we aren\u2019t living in a golden age of horror cinema is lying. **Resident Evil..** please be good.",
       "gold": "analysis",
-      "predicted": "analysis"
+      "predicted": "hot_take"
     },
     {
       "text": "limited series hidden gem\ud83c\udf52. The art style, the music, the plot?! Please tell me others have seen this I have no one to talk to about this! It\u2019s such an interesting artistic horror piece with amazing music.",
@@ -179,22 +179,22 @@
     {
       "text": "Black Phone & Black Phone 2. I\u2019m curious others opinion. I think these two were a well done combo. The sequel builds on the original without making it seem like we\u2019re getting an original repeat and I like the call backs to Nightmare on Elm Street with the attacks in dreams, but curious what others think.",
       "gold": "hot_take",
-      "predicted": "analysis"
+      "predicted": "question"
     },
     {
       "text": "Happy 10th anniversary to my favorite Christmas movie of all time. Fingers crossed we get a sequel one day \ud83e\udd1e",
       "gold": "hot_take",
-      "predicted": "analysis"
+      "predicted": "hot_take"
     },
     {
       "text": "Does anyone remember this movie? Directed by Nick Hamm, this British psychological thriller follows four private school students trapped in an abandoned underground bomb shelter. The film stars Thora Birch (Hocus Pocus, The Walking Dead), Keira Knightley (Pirates of the Caribbean), Desmond Harrington (Wrong Turn, Dexter), Laurence Fox (White Lines), and Embeth Davidtz (Army of Darkness, Thirteen Ghosts). I remember watching this a long time ago. It was a part of one of those \u201c8 Horror Movies to Die For\u201d DVDs you'd find at Walmart back in the day. I recently saw someone make a video essay talking about it and it got me wondering if anyone else has seen it, and if so, what did you think?",
       "gold": "question",
-      "predicted": "analysis"
+      "predicted": "question"
     },
     {
       "text": "Wrong Turn (2003), First time watching and wow was that brutal and gory but also incredible. Such a awesome movie and a classic for me now.",
       "gold": "hot_take",
-      "predicted": "analysis"
+      "predicted": "hot_take"
     },
     {
       "text": "Omg the Exorcist Martyrs trailer is amazing. I knew about the project of course but I just saw the trailer and it gave me goosebumps! Silence of the Lambs meets Seven with a tad of Longlegs: shut up and take my money already! Great casting as well, Flanagan looks back on track after toning it down a bit for Carrie. Thoughts?",
@@ -204,37 +204,37 @@
     {
       "text": "Movie #3 on Night 17 is The Lost Boys (1987) \ud83e\udddb\u200d\u2642\ufe0f\ud83c\udf83. \"You're a vampire, Michael! My own brother, a damn, blood-sucking vampire. You wait 'til Mom finds out, buddy!\" This is one of my all-time favorite not just horror but movies overall. It's such a classic.",
       "gold": "hot_take",
-      "predicted": "analysis"
+      "predicted": "hot_take"
     },
     {
       "text": "Peter Pans Neverland Nightmare (2025) definitely not what I expected going into it. Ngl its like a LGBTQ terrifier lol I'd give it a 4/5",
       "gold": "hot_take",
-      "predicted": "question"
+      "predicted": "reaction"
     },
     {
       "text": "My top 5 horrors are smile 1 and 2, obsession, heriditary and sinister. I haven't seen every horror movie. But I particularly enjoy slowburn and dreadful horror. More so uncanny than jumpscares or pure gore. Personally if I rated them from 1-5 (1 being the most scary, I'd go Obsession, smile 2, smile 1, herditary and sinister. Please let me know what you think about my list. Movies I have seen (as many as I can think of): evil dead (newest, like 2013), fractured, event horizon, all the aliens, all the conjurings, the shining, get out, the babadook, the ritual, apostle, midsommer, late night with the devil, blair witch project, deliver us from evil, all a quiet places. Havent seen: It, friday the 13th, scary movie, nightmare on elm street, the excorcist, halloween, the thing, saw, terrifier, tex chainsaw. Are any of these worth watching?",
       "gold": "question",
-      "predicted": "analysis"
+      "predicted": "hot_take"
     },
     {
       "text": "I highly recommend The Amulet on Hulu. Really liked this one. It\u2019s a slow burn, not a slasher but some decent gore. Well acted, directed, great cinematography & score. Very cool that it had a very large female creative/production team. Not something you see in this genre very often but it makes sense based on the subject matter. There were nods/homages/similarities to the works of Argento, Aster & Panos Cosmatos as well as maybe a tiny smidge of Cronenberg plus some practical f/x that looked like a nod to early Raimi (ED 2). There\u2019s a \u201cmeh\u201d vfx scene that may take some out of the movie due to both its look & the sudden tonal change it takes the movie in but overall, I dug it!",
       "gold": "analysis",
-      "predicted": "analysis"
+      "predicted": "hot_take"
     },
     {
       "text": "So Leatherface used to be one of the \"big\" slashers back in the day, but hasn't maintained a strong legacy like Freddy, Jason, and Michael. What happened? Bad sequels? He's not as interesting as the other three? Chainsaws aren't a great slasher weapon? All of the above?",
       "gold": "question",
-      "predicted": "analysis"
+      "predicted": "question"
     },
     {
       "text": "Saw BUDDY A Second Time. I was right next to a giant speaker for my second viewing in a packed theater. And the ambience of the film was so engrossing. Right at the opening (and between some of the scenes before the 'It's Buddy' intro) there's a black screen with eerie, ambient sounds. Children laughing, along with this sort of deep huuuuuuum sound. Ghostly really. It was so chilling. Nearly caused my seat to vibrate. It made everything feel much scarier, much more real. It added to the 'I'm in a nightmare' quality to the entire film. It really goes to show SO much of horror is in the sound design. So I really am glad I saw it again!",
       "gold": "analysis",
-      "predicted": "analysis"
+      "predicted": "hot_take"
     },
     {
       "text": "A reflection of \"Barbarian\" A long time ago, I fell out of the habit of watching movies. Back when VHS tapes were still a thing, I loved going to the video rental store and picking out three or four horror movies to watch with my friends over the weekend. The Blob, Friday the 13th, Children of the Corn, Child's Play, Gremlins... I was completely obsessed. About two months ago, I decided to get back into it. Now, every night after work, I sit down and watch one or two movies. I have to say, that passion has come back stronger than ever. It's fascinating to see how much the horror genre has evolved. It has reinvented itself, becoming far more refined, better crafted, and filled with genuinely engaging stories. Barbarian is one of those movies that I absolutely loved discovering. It had me hooked from beginning to end. It's strange, unsettling, dark, and bizarre in just the right measure. I wouldn't say it genuinely scared me because, at my age, I don't really get frightened by movies anymore\u2014I always know they're just movies. That's why I connect much more with the other emotions they evoke: the sense of unease, the unpredictability, the discomfort, the atmosphere, the cinematography, and the originality of a well-told story. Barbarian delivers all of that remarkably well. I've seen some people say the movie loses steam in its second half. Well, I couldn't disagree more. I loved the second half just as much as the first. An outstanding film that avoids the usual slasher, ghost, and demon clich\u00e9s. Barbarian has definitely earned a special place in my heart. 10/10",
       "gold": "hot_take",
-      "predicted": "analysis"
+      "predicted": "reaction"
     },
     {
       "text": "Trying to find a horrible movie.. Hello! I really Hope you guys can help me... Im trying to find the name of a horror movie I watched a long time ago, but I can\u2019t remember the title. Here\u2019s what I remember: The story is about two brothers on a road trip through the desert. At some point, they stop at a house or cabin where there\u2019s a group of people partying drinking, playing games, having fun. The younger brother decides to stay with the group, even though the older brother doesn\u2019t want him to and ends up leaving without him. Once the younger brother stays in the house, paranormal and satanic things start happening. At one point, they go into the backyard and find a small shed or cabin filled with satanic symbols and ritual objects. Inside the house, there are creepy moments where people appear duplicated, like you see the same person in two places at once for example, someone is in the kitchen and at the same time sitting on the couch. The lights go out, things turn dark, and everything gets worse. By the end, everyone in the house ends up dying or disappearing. When the older brother comes back to look for his younger brother, the house is completely empty and looks normal, as if nothing ever happened and no one was there. Does anyone know which movie this is?",
@@ -244,22 +244,22 @@
     {
       "text": "If you have the chance to see X in the theater DO IT!!!!! Wow this movie was absolutely phenomenal, I had seen a trailer for it I think with Resident Evil Welcome to Raccoon City, but I forgot about it and went on with my life, I never read into the movie and I knew just about nothing about this film aside from the one trailer I had seen\u2026 Cut to the last few days and I have seen tons of people talking about it on Reddit, well I was off yesterday and when I saw a article talking about it being one of the best modern slashers I said fuck it, I bought a ticket and headed to the theater. I was not disappointed!!! This movie looks fantastic, from the opening shot looking out of a barn making the film look like it was shot on a old camera I knew I was in for something special. The cinematography in this movie was so beautiful, it sent me through thinking about movies like Evil Dead and Texas Chainsaw Massacre, Friday the 13th and so on. The movie is just so much fun. The kills made me feel like an 80s slasher fan again, there is a scene shot in red lighting that makes the movie feel vibrant yet very very dark. Do yourself a favor and see this movie in a packed theater. You will not be disappointed! Side note, stick around after the credits for a cool treat!!",
       "gold": "hot_take",
-      "predicted": "analysis"
+      "predicted": "reaction"
     },
     {
       "text": "One of the best Vampire movie's ever made ! Bill Paxton is great in this as is Lance",
       "gold": "hot_take",
-      "predicted": "analysis"
+      "predicted": "hot_take"
     },
     {
       "text": "Brightburn - Newly Added to Netflix. A fantastic horror movie. It's basically a Superman origin story. If Superman was sent to Earth to conquer it, rather than save it.",
       "gold": "hot_take",
-      "predicted": "analysis"
+      "predicted": "question"
     },
     {
       "text": "Salem (TV Series) I know it\u2019s not a movie, but I am into the 3rd (and last \ud83d\ude22) season of Salem on Hulu and it is FANTASTIC!!!! About Salem, MA during the days of the witch hysteria but this time they have reason to worry! The storyline, cinematography, imagery and acting are all on point and it is downright creepy at times! I HIGHLY recommend!!!!",
       "gold": "hot_take",
-      "predicted": "analysis"
+      "predicted": "hot_take"
     },
     {
       "text": "Thoughts on this? Went in blind and just finished it, what a great movie",
@@ -279,12 +279,12 @@
     {
       "text": "The Coffee Table (2022) I just came across this Spanish film and saw that it had a very good critical rating. I want to highlight some points that I liked and others that, honestly, didn't convince me completely. 1. The premise After having seen so many movies in this genre, it's hard to make something that really keeps you glued to the screen and, moreover, has a premise different from what we've always seen that even Stephen King praised it. 2. The little table From the poster and the title, I thought it was going to be some kind of \"haunted table\" that killed people. I had no faith in it. But after the first 10 minutes, it was WOW! 3. The dad I thought it was excellent how he navigates through that whirlwind of emotions that arise from what happens with the little table. The actor works a lot with subtlety, without exaggerating or overacting, and that made me completely believe in his character. Throughout the entire movie, one question accompanied me: what do you do in a situation like this? How do you react? I wanted to hug him and, at the same time, I had my doubts about what \"the little girl\" says. 4. The only thing that didn't convince me When the mom came back from the supermarket, I found it strange that she didn't go directly to see the baby. I understand that the dad had a hard time getting him to sleep, but I think any mom, out of habit, would at least go take a quick look. I also felt that they stretched out the part where they couldn't nobody \"go see him\" a bit. Anyway, I highly recommend the movie for the performances and, above all, for the premise. Thoughts?",
       "gold": "analysis",
-      "predicted": "question"
+      "predicted": "analysis"
     },
     {
       "text": "If you had to make a 1 hour+ movie out of 10 Treehouse of Horor segments, what would you pick? I want to make a movie of sorts, sort of a \"best of\" Treehouse of Horror segements compilation. What 10 segments would you include? I'd go with: 1. The Raven (I) 2. The Monkeys Paw (II) 3. A Clown without Pity (III) 4. Dial Z for Zombies (III) 5. Bart Simpsons Dracula (IV) 6. The Shinning (V) 7. Nightmare on Evergreen Terrece (VI) 8. The Thing and I (VII) 9. Easy Bake Coven (VIII) 10. Reaper Madness (XIV)",
       "gold": "question",
-      "predicted": "analysis"
+      "predicted": "question"
     },
     {
       "text": "Saccharine : Theories about the Grey's Pills. !!!!English isn't my first language! I used a translator!!!! I just saw the movie a few minutes ago, so it's still fresh in my mind. At the beginning, we meet Melissa, who advises Hana to try \"Grey's\" pills. Later, after Hana makes her own DIY version to speed things up and be more eco-friendly by using products from a local producer (Berta the spirit), she goes back to see Melissa. When she asks her questions, Melissa mentions a similar, but milder, problem. We see a brief flash of a spirit and her in a reflection, a sign that it's connected to the deceased, but that once she stopped taking the Grey's pills, everything stopped. Here are my theories, and I'd love to hear your thoughts: The company, or the person, producing the pills Melissa takes probably takes more precautions than Hana to prevent these kinds of events. Perhaps, as with medical studies, people sign a consent form before ingesting the pills. I also think that the selected individuals are healthy guinea pigs so as not to affect the patient ingesting them. Like the \"Grey\" victims (I'll call the company/producer that) who consented to not finding immediate peace, the substance remains present in the life of the person ingesting it but doesn't harm them. It's present and influences their sleep, but it's considered more of a side effect. I think that's why when Melissa says it stopped when she stopped taking the pills, and the figure seen in the course segments appears aged, it's because it represents someone who was quite healthy and simply died of old age. Hana did the opposite: she took pieces of a non-consenting corpse, preventing Berta from finding peace in death. She doesn't seem to have processed them, but rather ingested them directly. Berta was already in poor health, so I like the fact that even if we think Berta was linked to Hana because of the spot on her pancreas, nothing proves it or tells us that possession wasn't the cause of her health problems. The ending also suggests this aspect: \"I devoured you, you devour me in return because I stole your body, so I offer you a part of my own body as a sacrifice.\" I like this theory, but I know it has flaws and doesn't explain why she devours Alanya at the end (the painting in foreshadowing). Someone made a connection between the post-credits scene where she eats little figures on several cakes and the fact that she devours Alanya, with the line, \"Does she want to be with her, or does she want to become like her?\" Anyway, I really enjoyed the film and I'd be curious to hear your thoughts on my theory :)",
@@ -294,7 +294,7 @@
     {
       "text": "Finally watched Obsession! I\u2019m a bit late to the party but I just had to talk about it. I have consumed a bunch of horror media. Books, movies, comics, you name it. Nothing has disturbed me as deeply as this film. The not so subtle subtext of date rape and Bear\u2019s predatory adoration is deeply unsettling and paired with the terrifying way Nikki moved through out the movie left no room for comfort. One of the creepiest scene to me in horror filmography is the \u201cblack maid\u201d Georgina crying and saying \u201cNo\u201d on repeat in Get Out that\u2019s basically the whole shtick with Nikki. With all the slop drenched in unoriginality coming out of Hollywood at times I\u2019m so happy horror still finds new ways to fuck me up. I\u2019m excited to see where the director goes next.",
       "gold": "analysis",
-      "predicted": "analysis"
+      "predicted": "reaction"
     },
     {
       "text": "What's your favorite Horror Comedy of all time?",
@@ -314,7 +314,7 @@
     {
       "text": "Pearl (2022) Review. Awesome movie, even better than X in my opinion. They actually tackle a lot of the same themes but it works because Pearl and Maxine from X are supposed to be 2 sides of the same coin. Plus, this has enough new stuff and the two approaches are so completely different so they really complement each other well. I love how much they commit to the early Hollywood style. The cinematography is super vibrant and colorful and I really liked the sound design. Everything is really loud and bombastic, including an unironically really good orchestral score. Mia Goth is great. She\u2019s kinda like Joaquin Phoenix\u2019s Joker in that she elicits a lot of sympathy at first before giving a startlingly realistic portrayal of mental illness. I think the best example of all this is the dinner scene during the thunderstorm about halfway through. It\u2019s intentionally cheesy, but the visuals, sound, and performances all come together beautifully. It\u2019s one of the best individual scenes I\u2019ve seen all year. And the final shot is perfect. It\u2019s darkly comedic but as the credits roll it becomes more and more unsettling, letting the audience out on a great creepy note. I think there are a couple moments where it\u2019s trying a little too hard to tie back into X but otherwise, this is pretty much exactly what I was hoping for. Can\u2019t wait to see how MaXXXine turns out.",
       "gold": "analysis",
-      "predicted": "analysis"
+      "predicted": "reaction"
     },
     {
       "text": "does anyone else remember that one weird psychological horror indie flick from 2011 that literally gave me insomnia. tbh i still think about this movie at 3am sometimes and it lowkey ruins my vibe lmao. back in 2012 i was like 15, coming home after school to the agonizing hum of our giant family gateway desktop. no ads, no tiktok brainrot, just sketchy indie streaming sites and the wild west of the early 2010s internet. i stumbled on this completely buried psychological horror called *the mirror garden* or something similar\u2014deadass can't even find it on letterboxd now, trust me i've tried. it wasn't about cheap jump scares or gore at all. it was this agonizingly slow, grainy descent into a protagonist slowly realizing their house layout was subtly shifting every time they blinked. no music. just the sound of floorboards creaking in low definition. i literally couldn't sleep for three days straight because every time i closed my eyes i just pictured that hallway stretching out endlessly. like bro whattt \ud83d\ude2d why did we do that to ourselves back then?? anyway sorry for rambling, it just hit me like a brick tonight while scrolling through modern netflix horror junk. everything nowadays is so polished, 4k, algorithmic. back then, finding some cursed low-res movie on a forum felt like discovering a real-life creepypasta. my hands are literally shaking typing this cuz the aesthetic of that era was just unmatched. u feel me??",
@@ -329,52 +329,52 @@
     {
       "text": "Help me find a movie. Two brothers (hispanic) are on a road trip and stop at a house in the desert where a group of young people are partying. The younger brother decides to stay with them, even though the older brother tells him to leave and come with him. The older brother drives off and the younger one stays in the house with these people he just met. During the night, satanic and paranormal things start happening in the house. They even find a small shed or cabin in the backyard with ritual objects and symbols. At some point there are moments where people seem duplicated, like the same person appears in two places. They're all trapped in this house. At the end When the older brother comes back in the morning, the house is completely empty and looks normal, and everyone has disappeared as if nothing ever happened. Ive watched this film maybe 10 years ago and i cannot find it again..",
       "gold": "question",
-      "predicted": "analysis"
+      "predicted": "question"
     },
     {
       "text": "What is the name of this 70s Horror Movie about a demonic park ranger? Back in the late 2000s, when I was maybe 8 or 9 years old, I was hanging out at my grandparents' house while they were talking with my mom in the other room. I turned on the TV to entertain myself and the channel it was on was showing a horror movie (possibly a made-for-TV-movie or a TV pilot) about two young couples going on a double date (I would guess they were in their early 20s) having a picnic at a park where they found a mysterious cave. I seem to remember the TV guide saying the program was called \"Devil Hunters\" or maybe \"Demon Hunters,\" but so far I haven't been able to find anything by that name. It was obviously made many years ago at that point and looked like it was made in the 1970s or possibly the early 1980s due to the rough film texture and the fashion/hair of the characters. I remember thinking one of the men kind of resembled Luke Skywalker. In the movie, the four young adults encounter a friendly, handsome young park ranger as they look for a good spot. They say goodbye to the ranger and shortly thereafter they notice a cave. The four investigate but get separated in typical horror movie fashion. One of the women found a human skeleton but when she rejoined the group, the others didn't believe her and her boyfriend tried to calm her by insisting it was probably just an animal skeleton. Then they found a deranged, disheveled old man who had apparently been living in the cave. He gave them an ancient-looking leather book and ran away (or maybe he just left it behind and they happened to find it). The group of young adults took the book with them and left the cave, resuming their picnic. As they ate, they opened the book and read through it. It seemed to be a journal of some kind discussing the author's supernatural investigations. They read that certain symbols like the cross repelled evil, and so three of them built symbols out of twigs as outlined in the book (I can't remember if they were genuinely concerned or were just curious). One of the women already had a cross necklace and so didn't build a symbol, but remarked something like \"Gee, I feel kinda left out.\" Meanwhile, the park ranger makes a dramatic transformation, with his skin becoming pale and his hair standing up (a bit like Eraserhead) and ditching his park ranger uniform in favor of a Dracula-like cape. He looks basically like a vampire but he doesn't seem affected by being out in broad daylight at all and I don't think he ever drinks blood. He's also able to teleport in a plume of smoke. It sounds cheesy but the actor's performance was dead serious and his evil glare was quite frightening to me. He teleports to the cave entrance and encounters the old man, who yells at him to \"go away\" and that he \"hasn't got it anymore\" (meaning the book he gave to the couples) or something like that. I think the ranger killed the old man after that but can't remember how. I'm not sure what exactly happened next, but I remember one of the women getting separated from the group (again) and running into the park ranger, still thinking he's friendly despite his obviously malevolent glare. I think he puts her in a trance or something but he recoils when he sees her cross necklace (just like a vampire). There was also a scene (which might have taken place earlier) where one of the men is reading from the book and reads one of the journal entries: \"I am unable to control what I have created...\" and the movie cuts to a shot (presumably a flashback) of some kind of tentacle creature that seems to have been achieved with claymation (like something made by Ray Harryhausen). Periodically, the movie seemed to flash-forward to one of the men (the Luke Skylwalker lookalike) being restrained by orderlies in a mental institution as he violently tried to throw them off. It seems he was frantic about whatever supernatural events he had experienced and somehow he had ended up with the woman's cross necklace from earlier. A pair of doctors observed him in a padded room and tried to make sense of his ramblings, and would read from the book to try and understand his supposed delusions. One of them tried to talk with \"Luke\" face-to-face but didn't believe his claims, and so \"Luke\" tried to grab him. The orderlies held him down and the doctor left the room, but finds the cross necklace in his hand and realizes that during the scuffle \"somehow I ended up with it.\" Luke realizes this around the same time and frantically shouts \"My...*grunt*...Cross!\" as he's struggling to breathe with the effort of resisting the orderlies, as if without the cross he doesn't have protection against whatever evil he encountered. I stopped watching the movie before I got to the end since my mom came into the room and changed the channel since thought it was too scary for me. It was pretty frightening, but mostly on a conceptual level. There wasn't really any graphic violence or even profanity from what I can remember. It was one of the first movies to really scare me even though it was probably a pretty cheesy film. Anyone think they can identify it?",
       "gold": "question",
-      "predicted": "analysis"
+      "predicted": "question"
     },
     {
       "text": "From dusk till dawn (1996). Blast from the past!! This film is a wild genre mashup that starts as a gritty crime thriller and suddenly mutates into full-blown vampire horror halfway through. Directed by Robert Rodriguez and written by Quentin Tarantino, it carries Tarantino\u2019s signature sharp dialogue and chaotic energy in the first half, especially through the intense, unpredictable character played by Tarantino himself alongside George Clooney\u2019s cool-headed criminal.",
       "gold": "hot_take",
-      "predicted": "analysis"
+      "predicted": "reaction"
     },
     {
       "text": "Sharni Vinson in You're Next is one of the most badass and smartest final girls. Rewatched this underrated gem after so many years and I forgot what a beast her character is! Just loved how badass and resourceful she was. Her going rage mode in the third act was just insane, and Sharni really sells the intensity. Underrated film and her performance is top notch.",
       "gold": "hot_take",
-      "predicted": "analysis"
+      "predicted": "reaction"
     },
     {
       "text": "Thoughts on The Collector (2009) Interesting film tbh, turned out better than I expected but it kinda lost its grip towards the end especially in the last 15 or so minutes. The ending though unexpected, when you think about it was dumb. Cinematography was unique with every interesting shots but the editing was a bit off especially in the scenes with the the kid. The sound design was another positive for me.",
       "gold": "question",
-      "predicted": "question"
+      "predicted": "reaction"
     },
     {
       "text": "31 Days of Horror: Day 17. \u2b50\ufe0f\u2b50\ufe0f\u2b50\ufe0f\u2728\ufe0f For those unaware, my favorite genre of Horror is Found Footage. I adore it. So much so, I put a bunch of Found Footage I want to watch on a picker wheel and thus created, \"The Wheel of Found Footage.\" Tonight the wheel was spun. File this one under, \"movies that hit too close to home because of my job.\" Don't get me wrong, I enjoyed it. The whole thing is shot via Snapchat, and was made when Snapchat was gaining popularity. I did feel like the pacing was off a bit, and the end confused me (unless it's supposed to be an, \"open to interpretation\" ending, then I have my thoughts), but overall pretty good; you could tell they were going for a Blair Witch vibe (the movie even gets name dropped).",
       "gold": "hot_take",
-      "predicted": "question"
+      "predicted": "reaction"
     },
     {
       "text": "BONE TOMAHAWK (2015). It\u2019s AWESOME. It may look like just a western from a distance, but damn the horror vibes are strong. Disturbing, but well worth the ride.",
       "gold": "hot_take",
-      "predicted": "analysis"
+      "predicted": "hot_take"
     },
     {
       "text": "Film of the year, without a doubt \u2014 and it\u2019s based off a video game. Just got out of the theater\u2026. Gamers\u2026.we\u2019re so back. The movie was incredible. The POV scenes flowed seamlessly with the film, they weren\u2019t over the top or begging to be noticed. Each set piece felt like an encounter in the game as well. I especially loved the ending too, it was ironically twisted. Respectable jump scares and the lead actor played a convincing everyday guy going through the motions of trying to survive an overnight apocalypse. 10/10, sequel please Cregger!",
       "gold": "analysis",
-      "predicted": "analysis"
+      "predicted": "reaction"
     },
     {
       "text": "Finally watched The Substance - how did everyone feel about the ending? I almost always enjoy horror movies. I was really looking forward to this one - I had heard good things, and a modern take on body horror was a compelling idea to me. I find that a lot of big box office horror/thriller movies fumble the ending. In 2024, I felt that way about Longlegs and Late Night with the Devil. Both of those movies had me roped in for the first 2/3 or 3/4 but went in disappointing directions for the ending - in Late Night with the Devil's Case, the last ten minutes or so. I LOVED the first 98% of that movie, but the hokiness factor skyrocketed out of nowhere just before the finish line. Unfortunately, I felt the same about The Substance. I have plenty of positive things to say about the movie. The visuals and acting were top notch. The gruesome cinematography was so vivid that I had to look away a few times. The writing and character work were clever - the film managed to explain the process of the main \"experience\" with very minimal dialogue, which was refreshing. Some of the more introspective scenes, like the date prep scene, were just as incredible in that they expressed Elisabeth's internal conflict without hitting you over the head with it. The suspense, implicit characterization, and pacing were all excellent - I did not feel bored or like the movie was dragging AT ALL for the duration of the run time. I really appreciated the storytelling too. I feel like body horror is always at its best when it's a metaphor for something larger - in this case, the way society callously discards women when they're \"past their prime\" physically. But the clever way that the movie sets up its central metaphor is why I was so disappointed in the ending. I actually liked the idea of Elisasue and the climax at the New Year's show - that sort of catharsis worked after the buildup of suspense surrounding the show, and the idea of the younger version STILL not being \"good enough\" was a great theme to end on. The metaphor was there, 100%, but I audibly groaned when Elisabeth's disembodied face crawled over to die on top of the Hollywood star, especially combined with Sue repeating \"Please give me a younger, better version of me!\" into the mirror, out loud, only a few minutes before. It just felt so ON THE NOSE compared to the writing in the rest of the movie. Like they really spent two hours setting up a powerful conflict with broader metaphorical implications, only to be suddenly become so heavy handed in the ending. It doesn't make me dislike the film at all, and it thematically works just fine. I was just very impressed with the (relative) subtlety of the first two hours, which made the sudden switch to \"We are telegraphing in the most direct and overt way possible exactly what you're supposed to take away from this movie\" a very jarring note to end on for me. Curious to hear everyone else's thoughts",
       "gold": "question",
-      "predicted": "analysis"
+      "predicted": "reaction"
     },
     {
       "text": "Why are so many horror protagonists aggressively unlikeable? I mean the kind of protagonist who is a wise cracking eye rolling sardonic dick. Hokum was probably the most aggregious recent case of this where the main man was so passive aggressive that I instantly stopped caring about him, and it made me remember that this was also a massive issue in the Night House and Hill House which were kneecapped by their characters being assholes. Compare that to something like Lake Mungo or REC, where it feels like the protagonists are just normal people who talk like normal people do and get unsettled by horror like you'd expect a normal person to. They don't act like they're in a Halloween episode of The Office. I suppose the question is why do film directors feel the need to constantly lampshade like this? Don't they know having their characters lament how uncool everything and everyone else is actively detracts from their movies?",
       "gold": "analysis",
-      "predicted": "analysis"
+      "predicted": "question"
     },
     {
       "text": "Movie Thoughts. Just watched **It Follows (2014)**, and what a surreal masterpiece of horror. What makes this movie so terrifying is how it turns open spaces into something genuinely frightening. No confined locations, no hiding in dark corners, no relying on darkness to create fear. Everything happens out in the open, yet the atmosphere feels eerie and unsettling in every possible way. A different kind of horror that makes you afraid of what's right in front of you. What are your thoughts on this one?",
@@ -394,7 +394,7 @@
     {
       "text": "What are your expectations for Clayface (2026) ? I'm curious what everyone thinks about the upcoming *Clayface* movie. Are you expecting a genuinely disturbing body horror film, or something more in line with a typical DC movie? Personally, I'm hoping they really lean into the body-horror elements and \"gore\". Kind of like The Substance (2024). What are your expectations?",
       "gold": "question",
-      "predicted": "analysis"
+      "predicted": "question"
     },
     {
       "text": "What movie makes you feel completely alone in loving it? You know that movie you mention and everyone either shrugs or says it\u2019s bad, while you\u2019re sitting there thinking it\u2019s amazing? For me it\u2019s Session 9",
@@ -404,42 +404,42 @@
     {
       "text": "Hokum\u2019s Jack the Jackass. I just watched Hokum last night; going in completely blind on the film. Overall, it wasn\u2019t bad. It could\u2019ve had a stronger story but that\u2019s not why I\u2019m here. Lol. Jack the Donkey / Jack the Jackass\u2026I am 37 or born in \u201889 if that\u2019s easier. Lol. I swear to god, I\u2019ve seen a character exactly like that when I was kid in something. I can\u2019t for the life of me remember where I\u2019ve seen it or what character it was or if it was just reminiscent of a nightmare I had as a kid. But I swear I\u2019ve seen this character before in a movie or a tv show. I don\u2019t know it was from childhood like a late 80\u2019s/early 90\u2019s something or other. The \u201canimal\u201d but human, bulging eyes, creepy voice. Does anyone have ANY idea where it could\u2019ve been? This is going to drive me nuts until I figure it out.",
       "gold": "question",
-      "predicted": "analysis"
+      "predicted": "question"
     },
     {
       "text": "Weird symbols in Mother Mary. Has anyone noticed this weird symbol at 1:17:18. It happens really briefly, in a matter of seconds. I\u2019m watching for the first time and intrigued with the symbolism. Thinking it might have some type of witch craft in it because of the theme of the whole movie",
       "gold": "question",
-      "predicted": "analysis"
+      "predicted": "question"
     },
     {
       "text": "Finally got around to watching this one. I thought it was pretty good, the grey aliens in this were actually scary af with their sounds and weird movements",
       "gold": "hot_take",
-      "predicted": "analysis"
+      "predicted": "hot_take"
     },
     {
       "text": "Has anyone else watched Cadaver?! I thought this move was exceptional. The story was great, cinematography was fantastic. Acting was good. Any thoughts? I am literally the only person I know that has seen it.",
       "gold": "question",
-      "predicted": "analysis"
+      "predicted": "question"
     },
     {
       "text": "As Above, So Below (2014). As Above, So Below is a found-footage horror film that takes viewers deep into the real-life Paris catacombs, blending archaeological adventure, psychological horror, alchemy, and themes inspired by Dante's journey through Hell. Its biggest strength is atmosphere: the cramped tunnels, darkness, and constant feeling of being trapped create genuine tension. Many viewers consider the catacomb setting one of the most effective and memorable horror locations of the 2010s.",
       "gold": "hot_take",
-      "predicted": "analysis"
+      "predicted": "hot_take"
     },
     {
       "text": "The Babadook. \"The Babadook\" (2014) is a psychological horror film about a grieving mother, Amelia, and her troubled son, Samuel. After reading a creepy children's book about a monster called the Babadook, they begin experiencing terrifying events. The film explores themes of grief and mental illness, as the Babadook becomes a symbol of Amelia's unresolved trauma. Renowned for its eerie atmosphere and emotional depth, the movie offers a unique blend of horror and psychological drama.",
       "gold": "hot_take",
-      "predicted": "analysis"
+      "predicted": "hot_take"
     },
     {
       "text": "What a gem. One of the best horror movies ive seen in 5 years. The cinematography is amazing. The birthing seen was almost exactly like the old scene in \"possession\".",
       "gold": "hot_take",
-      "predicted": "analysis"
+      "predicted": "hot_take"
     },
     {
       "text": "We need to talk about Longlegs. And how great and original it was. Beautiful film. Go into it cold. Think about it for a second. And then think about the cinematography Actors Settings And then the ending \ud83d\udc87\u200d\u2640\ufe0f\ud83d\udc87\u200d\u2640\ufe0f\ud83d\udc87\u200d\u2640\ufe0f\ud83d\udc87\u200d\u2640\ufe0f\ud83d\udc87\u200d\u2640\ufe0f",
       "gold": "hot_take",
-      "predicted": "analysis"
+      "predicted": "hot_take"
     },
     {
       "text": "Best horror movies of 2022 ranked. Lately I've been on a kick catching up on horror from the last year which I consider to be one of the best in modern times. Here's how I'm placing what I've seen this far, I'd love to hear what you have to say! 18. Choose or Die 17. The Black Phone (Know so many folks loved this one but I found it horribly boring and wish Scott Derickson would tread some different thematic ground, enjoyed Sinister far more) 16. VHS/99 15. X (This was hyped beyond belief and paled in comparison to Pearl which my partner and I watched first) 14. Bodies Bodies Bodies 13. Soft and Quiet (Effective for sure but genuinely suffocating with too little breathing room to keep it in my mind long enough for proper evaluation) 12. Mad God (Falls this far down to the list because I can celebrate the animation but found the inferred storytelling too vague to carry me into real love for everything beyond the spectacle) 11. Barbarian (Lost my focus by the second flashback, lots of cool ideas and I'm glad the previews gave so little up, but after the initial forty minutes I was just left feeling a little bored. Definately more fun to discuss than watch.) 10. Terrifier 2 (An absolute surprise having seen it before the first entry, but it gets a little exhausting by the tird viewing. Massive props to the VFX department and visual effects for making this such a joyride at the cinema, that first screening is untouchable) 9. Nope (Not a true horror film but I value the ambition, Keke Palmer stole the show and the themes, concepts and bizarre subtext of the film that Jordan Peele has mastered as a writer really hit a new high here) 8. The Menu (horror adjacent maybe but this one gains value in hindsight, the social commentary and ice cold malice conveyed in the acting is a standout. The battle of wits between Anya and Ralph is so good. Best psychological thriller of the year only to my number one) 7. Hellraiser 2023 (my first in the franchise! I know this one gets overlooked by franchise veterans but everything about the universe of the Cenobites, the cruelty of the puzzle, the pitch-perfect tone and how well Odessa A'zion commits to her role made this a blast. Also a slight bias, but seeing a trans woman succeed as a trans woman myself and learning more about Clive Barker really put this up there) 6 & 5. Scream and Smile (Pure cinema going experiences that nailed the line between balance and indulgence in their contemporary horror fear factors. Jenna Ortega fits the Craven protagonist vibe perfectly, and Sosie Bacon killed it as the lead in her film. Real popcorn fare that gets me all kinds of spooked) 4. Sissy (Australian bias aside, this just impressed the hell out of me with hard it ramped up. I've been waiting for a challenger to 'Ingrid Goes West' from a few years ago and this scratched the itch. Excellent performances from the cast who make their characters truly despicable, and the lead who managed to tow the line of sympathetic and unhinged. Was not expecting that ending, left my tummy in knots) 3. Gatlopp: Hell of a game (Least horror adjacent but so glad the internet drew the parallel because this is my most underrated this far. The casting is bespoke to the story being told and the way the game unfolds feels like a Jumanji therapy session. One of the movies you've never heard of that turns out to be excellent) 2. Pearl (Mia Goth everyone! My new it girl in horror. This one feels like watching a Trainwreck happen with all the worst people on board. Blocking, cinematography, colour grading and pure twisted unease of how every scene plays out still takes up residence in my mind) 1. Speak No Evil (Takes a whole damn lot to make me close my eyes in disgust and then leave me feeling totally empty. Without saying too much for those that haven't caught this one still, prepare to have your world shattered. Palpable tension out the wazoo, pristine performances from all involved. Best foreign suspense/domestic horror since 'Goodnight Mommy') Would be glad to know how you'd rearrange these, and recommendations are highly desired!",
@@ -454,22 +454,22 @@
     {
       "text": "Annabelle Creation. So I want to just start by saying that I'm not the biggest fan of supernatural movies in general. They're unbelievable to me which makes it really hard for me to get scared by them. With that said, I also want to say that this movie was much better than I thought it would be, but not as good as I hoped. The young girls were well acted, and there wasn't anything that stuck out as being bad, acting wise. The cinematography was well done as well. Pretty much everything about this movie was really well made. The doll was pretty awesome. They managed to give the doll an oppressive presence in the movie, even though most of the time it just sat there motionless. To me, that's a pretty big accomplishment. I guess there were a few times when the demon would manipulate the doll or whatever, but mostly it just sat there. There was a scene or two which I felt broke typical horror conventions and it really surprised me how well it worked. There was one scene where the girl was sitting there in her wheelchair, and all.of a sudden she gets attacked by this entity (which I think is actually the nun from the new conjuring movie. Is Wan making a movie about her yet?) which isn't too odd by itself, but what stands out to me is that this happened in the middle of the day. Usually these things happen at night in these types of movies, so I liked that it didn't follow those guidelines and did its own thing. Which brings me to my only complaint, (which isn't even a fault of the movie) it wasn't very scary to me. Which, as stated above, is my own fault for not being able to suspend disbelief or just because I'm flat out jaded at this point. Either way, most of the scares in the movie were somewhat predictable and by the numbers. There was one part with an ejector seat that I actually found pretty funny. Overall it was entertaining and well made. Leagues better than the first movie. 7/10",
       "gold": "hot_take",
-      "predicted": "analysis"
+      "predicted": "reaction"
     },
     {
       "text": "Have you seen this? Train to Busan is a movie that every Zombie movie fan NEEDS to see. This movie is a must watch.",
       "gold": "question",
-      "predicted": "analysis"
+      "predicted": "question"
     },
     {
       "text": "Favourite Horror Posters. Just something I felt like asking. What are people's favourite horror movie posters?. I love a lot (obviously!), but this is probably my absolute favourite. It's just so iconic.",
       "gold": "question",
-      "predicted": "reaction"
+      "predicted": "question"
     },
     {
       "text": "Could Trish and Darry avoided they're fate? (Jeepers Creepers 1) I'm not gonna get a lot of love for this one here but I would argue that if they just kept driving (fast) instead of creeping by his \"house of pain\" they would have made it to they're destination. Meaning that Trish and Darry weren't speacial or his main target but more like Halloween 1978 (before they ever mentioned Micheal and Laurie being related) where the victims were really just in the wrong place at the wrong time. Even after tailgating them the first time it really didn't seem like he was in any kind of hurry to get these guys. Not to mention he barley noticed them watching him throw bodies in the pipe (it wasn't till after the like third body he spotted them) on top of this they could have saved an hour at least if they didn't stop to see what was down the pipe. Yes I understand morally they decided it was the best thing to do but after watching this movie a million times I often ask myself did the creeper really want Darry or Trish from the beginning? Or did they just put themselves in his path so many times he just couldn't give them a pass anymore . It's a big highway they're on , lots of people even in the area despite it being rural, it's obvious from his lair he has a consistent food source. Also I have heard that it was confirmed that the creeper wanted Darry's eyes there was even some foreshadowing something to do with Trish and her glasses in the opening scene but even with this insight i'm certain there's more than just one person on the road with good enough eyes for the creeper and he sure did take his time before he even started really getting on these peoples ass. Granted he can fly and I'm sure cover a lot of ground but if he hangs around his place enough for him to be able to hang however many hundred bodies on the roof and walls, petrify them and stitch them together. I doubt he's going anywhere far out of Po county",
       "gold": "analysis",
-      "predicted": "analysis"
+      "predicted": "question"
     }
   ]
 }
