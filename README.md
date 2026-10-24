@@ -273,20 +273,16 @@ The labels follow `LABELING_RULES.md`, which applies four tests in a fixed order
 
 | Measure          | Baseline | Trained | Difference |
 | ---------------- | -------- | ------- | ---------- |
-| Overall accuracy |          |         |            |
-| Macro F1         |          |         |            |
-| F1 — `label_one` |          |         |            |
-| F1 — `label_two` |          |         |            |
+| Overall accuracy | 0.299    | 0.678   | +0.379     |
+| Macro F1         | 0.255    | 0.375   | +0.120     |
+| F1 — `analysis`  | 0.274    | 0.000   | -0.274     |
+| F1 — `hot_take`  | 0.000    | 0.730   | +0.730     |
+| F1 — `question`  | 0.545    | 0.771   | +0.226     |
+| F1 — `reaction`  | 0.200    | 0.000   | -0.200     |
 
-**What I predicted before I looked:**
+**What I predicted before I looked:** I can't give a true blind prediction here, because I had already seen the trained model's numbers from unit 5 (accuracy 0.678, and it never predicted `analysis` or `reaction`) before I ran the baseline. What I expected from that was that the trained model would beat the baseline on `hot_take` and `question`, my two biggest labels, and that the baseline might do better on `analysis` and `reaction`, which the trained model never predicted.
 
-<!-- Milestone 1 asks you to write this BEFORE seeing the trained numbers. A
-     prediction made afterwards isn't one. -->
-
-**What the gap actually means:**
-
-<!-- If the baseline matched your trained model, your fine-tuning added
-     nothing — and that is a real finding, not a failure. Say it plainly. -->
+**What the gap actually means:** The trained model is far more accurate overall (0.678 vs 0.299), and most of that comes from `hot_take`, where the baseline scored an F1 of 0.000 on 36 posts. Its accuracy is below 0.414, what I'd get by always guessing `hot_take`, so without training it is worse than guessing the biggest label. But the trained model's wins come only from the two big labels. The baseline did better on `analysis` (0.274 vs 0.000) and `reaction` (0.200 vs 0.000), the two labels the trained model never predicted. `reaction` has only 3 test posts, so that 0.200 is one post and I won't read much into it. The fine-tuning clearly added something, but it learned the common labels and not the rare ones.
 
 ---
 
