@@ -288,33 +288,26 @@ The labels follow `LABELING_RULES.md`, which applies four tests in a fixed order
 
 ## Run Log — Before
 
-<!-- Five criteria across three seeds. The notebook's section 6 prints the
-     spread table; the Target and Verdict columns are yours. -->
-
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
-| --------- | ------ | ------- | ------ | --------- | ------- |
-| 1.        |        |         |        |           |         |
-| 2.        |        |         |        |           |         |
-| 3.        |        |         |        |           |         |
-| 4.        |        |         |        |           |         |
-| 5.        |        |         |        |           |         |
+|---|---|---|---|---|---|
+| 1. Overall accuracy | ≥ 0.62 on every seed, and ≥ 15 points above the always-`hot_take` baseline (0.414) | 0.678 (+0.264 over baseline) | 0.724 (+0.310) | 0.690 (+0.276) | MET |
+| 2. Per-label F1 floors | question 0.75, hot_take 0.55, analysis 0.40, reaction 0.25 on every seed | question 0.771, hot_take 0.730, analysis 0.000, reaction 0.000 | question 0.816, hot_take 0.790, analysis 0.000, reaction 0.000 | question 0.795, hot_take 0.734, analysis 0.000, reaction 0.000 | MISSED |
+| 3. Balance | every label ≥ 40 rows, no label > 50% | smallest label 19 rows (reaction), largest 41.2% | same (fixed by the data) | same (fixed by the data) | MISSED |
+| 4. Self-consistency | ≥ 25 of 30 matches when I relabel 30 posts 7+ days later | not yet run | not yet run | not yet run | NOT YET TESTED |
+| 5. Confidence | most-confident half ≥ 10 points more accurate than least-confident half on every seed | _(fill in)_ | _(fill in)_ | _(fill in)_ | _(pending)_ |
 
 ### Confusion matrix
 
-<!-- ⚠️ TYPED AS A MARKDOWN TABLE. The notebook prints one ready to paste.
-     An image of a matrix earns nothing. -->
+Seed 42:
 
-| true \ predicted |     |     |     |
-| ---------------- | --- | --- | --- |
-| \*\*\*\*         |     |     |     |
-| \*\*\*\*         |     |     |     |
-| \*\*\*\*         |     |     |     |
+| true \ predicted | analysis | hot_take | reaction | question |
+|---|---|---|---|---|
+| **analysis** | 0 | 8 | 0 | 6 |
+| **hot_take** | 0 | 27 | 0 | 9 |
+| **reaction** | 0 | 1 | 0 | 2 |
+| **question** | 0 | 2 | 0 | 32 |
 
-**My biggest off-diagonal number, and what it means:**
-
-<!-- Not "the model made mistakes" — WHICH boundary it didn't learn, and which
-     direction. "7 real analysis posts were called hot_take and only 3 went the
-     other way" is a direction, not just an error rate. -->
+**My biggest off-diagonal number, and what it means:** 9 real `hot_take` posts were called `question`, and only 2 real `question` posts were called `hot_take`, so on this pair the model leans toward `question`. The bigger problem is that it never predicted `analysis` or `reaction` at all. All 14 `analysis` posts went to `hot_take` (8) or `question` (6), and 2 of the 3 `reaction` posts went to `question`. 
 
 ---
 
