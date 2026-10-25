@@ -199,7 +199,7 @@ The labels follow `LABELING_RULES.md`, which applies four tests in a fixed order
 
 **Moment 2**
 
-- \_What I asked for: Label all the rows based on my label definitions.
+- _What I asked for: Label all the rows based on my label definitions.
 - _What came back:_ 558 rows of labeled data.
 - _What I changed:_ I kept the labels and rows as written.
 
@@ -234,13 +234,14 @@ The labels follow `LABELING_RULES.md`, which applies four tests in a fixed order
 
 ## Run Log — Before
 
-| Criterion              | Target                                                                                | Seed 42                                                        | Seed 7                                                         | Seed 2024                                                      | Verdict        |
-| ---------------------- | ------------------------------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------- |
-| 1. Overall accuracy    | ≥ 0.62 on every seed, and ≥ 15 points above the always-`hot_take` baseline (0.414)    | 0.678 (+0.264 over baseline)                                   | 0.724 (+0.310)                                                 | 0.690 (+0.276)                                                 | MET            |
-| 2. Per-label F1 floors | question 0.75, hot_take 0.55, analysis 0.40, reaction 0.25 on every seed              | question 0.771, hot_take 0.730, analysis 0.000, reaction 0.000 | question 0.816, hot_take 0.790, analysis 0.000, reaction 0.000 | question 0.795, hot_take 0.734, analysis 0.000, reaction 0.000 | MISSED         |
-| 3. Balance             | every label ≥ 40 rows, no label > 50%                                                 | smallest label 19 rows (reaction), largest 41.2%               | same (fixed by the data)                                       | same (fixed by the data)                                       | MISSED         |
-| 4. Self-consistency    | ≥ 25 of 30 matches when I relabel 30 posts 7+ days later                              | not yet run                                                    | not yet run                                                    | not yet run                                                    | NOT YET TESTED |
-| 5. Confidence          | most-confident half ≥ 10 points more accurate than least-confident half on every seed | _(fill in)_                                                    | _(fill in)_                                                    | _(fill in)_                                                    | _(pending)_    |
+
+| Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
+|---|---|---|---|---|---|
+| 1. Overall accuracy | ≥ 0.62 on every seed and ≥ 0.15 above the always-`hot_take` baseline (0.414) | 0.678 (+0.264 over baseline) | 0.724 (+0.310 over baseline) | 0.690 (+0.276 over baseline) | MET |
+| 2. Per-label F1 floors | `question` ≥ 0.75, `hot_take` ≥ 0.55, `analysis` ≥ 0.40, `reaction` ≥ 0.25 on every seed | question 0.771, hot_take 0.730, analysis 0.000, reaction 0.000 | question 0.816, hot_take 0.790, analysis 0.000, reaction 0.000 | question 0.795, hot_take 0.734, analysis 0.000, reaction 0.000 | MISSED |
+| 3. Balance | Every label ≥ 40 rows; no label > 50% | reaction has 19 rows; largest label is 41.2% | Same dataset counts | Same dataset counts | MISSED |
+| 4. Self-consistency | ≥ 25 of 30 matches when relabeling 30 posts at least 7 days later | Not yet tested | Not yet tested | Not yet tested | NOT YET TESTED |
+| 5. Confidence | Most-confident half ≥ 10 percentage points more accurate than least-confident half on every seed | Half comparison pending; thirds: 86.2% vs. 48.3% (gap 37.9 points) | Half comparison pending; thirds: 86.2% vs. 55.2% (gap 31.0 points) | Half comparison pending; thirds: 86.2% vs. 44.8% (gap 41.4 points) | PENDING |
 
 ### Confusion matrix
 
@@ -257,29 +258,29 @@ Seed 42:
 
 ---
 
+
 ## Verdicts and Diagnoses
 
-<!-- MET or MISSED against LAST UNIT's target. The target has to hold across
-     all three seeds, not turn up sometimes. -->
+<
 
-| #   | Criterion | Target | Verdict | How I decided |
-| --- | --------- | ------ | ------- | ------------- |
-| 1   |           |        |         |               |
-| 2   |           |        |         |               |
-| 3   |           |        |         |               |
-| 4   |           |        |         |               |
-| 5   |           |        |         |               |
+| # | Criterion | Target | Verdict | How I decided |
+|---|-----------|--------|---------|---------------|
+| 1 | Overall accuracy | At least 0.62 on each of three seeds and at least 0.15 above the majority-class baseline | MET | Accuracy was 0.678 (seed 42), 0.724 (seed 7), and 0.690 (seed 2024). All exceeded 0.62 and beat the 0.414 baseline by at least 0.264. |
+| 2 | Per-label F1 | `question` ≥ 0.75, `hot_take` ≥ 0.55, `analysis` ≥ 0.40, `reaction` ≥ 0.25 on every seed | MISSED | `question` and `hot_take` met their thresholds on all seeds, but `analysis` and `reaction` had F1 scores of 0.00 on all three seeds. |
+| 3 | Label coverage and balance | At least 40 examples per label, with no label exceeding 50% of the dataset | MISSED | `reaction` had only 19 examples, below the minimum of 40. The largest class, `hot_take`, represented 41.2% of the 578 examples, meeting the 50% limit. |
+| 4 | Delayed relabel consistency | Relabel 30 random posts at least 7 days later and match at least 25/30 original labels | NOT YET TESTED | The required delayed relabeling result is not available yet. The earlier same-day relabeling result does not satisfy the 7-day requirement. |
+| 5 | Confidence-based accuracy | On every seed, the most-confident half of test predictions is at least 10 percentage points more accurate than the least-confident half | PENDING | The current results compare the most-confident and least-confident thirds, with accuracy gaps of 37.9, 31.0, and 41.4 percentage points for seeds 42, 7, and 2024. The required half-versus-half comparison has not yet been calculated. |
+
 
 **Diagnoses**
 
-<!-- For each miss: the cause, and how you know. The four common causes are:
-     too few examples for a label, a boundary you applied inconsistently, a
-     genuinely hard label pair, and a task the model can't reach from this
-     much data.
+Criterion 2 — Per-label F1 (MISSED). The model consistently failed to identify analysis and reaction, scoring 0 F1 for both labels across all three seeds. The seed-42 confusion matrix confirms that the model never predicted either label. reaction is particularly data-limited: it has only 19 examples in the full dataset and just 3 in the seed-42 test set. Too few examples is therefore a strong likely cause for reaction. However, analysis has 93 examples and still scored 0 F1, so the problem may also involve the model struggling to distinguish that category from the other labels. The 30/30 agreement result supports consistent labeling in the compared sample, making inconsistent labeling less likely as the explanation for that sample's results.
 
-     ⚠️ Use your agreement report as evidence. It is the only instrument you
-     have that can tell a LABELLING problem from a MODEL problem, and this
-     section is graded on whether you used it that way. -->
+Criterion 3 — Label balance (MISSED). The dataset has only 19 reaction examples, fewer than the required 40. This is direct evidence that the class has too few examples. Although no class exceeds 50% of the dataset, the model's failure to predict analysis and reaction shows that meeting the maximum-class threshold alone does not ensure the model learns every label. 
+
+Criterion 4 — Labeling self consistency. (Pending)
+
+Criterion 5 — Confidence separation (PENDING). The seed-42 result shows that the most-confident third was substantially more accurate than the least-confident third: 86.2% versus 48.3%, a 37.9-percentage-point difference. This is encouraging evidence that confidence carries useful information. However, the criterion specifically requires comparing the most-confident half with the least-confident half across all three seeds, so the available numbers do not establish whether the target was met.
 
 ---
 

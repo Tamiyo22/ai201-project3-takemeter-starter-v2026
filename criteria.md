@@ -51,53 +51,43 @@ whether you hit them:
 
 ---
 
-## 1.
+## 1. Overall accuracy
 
-Overall accuracy on the held-out test set is at least 0.62 on every one of the three seeds, and at least 15 points above the always-predict-the-biggest-label baseline on every seed.
-
-**Why this target:**
-
-I have four labels, so random guessing gets 25%, and my biggest label is hot_take at 41.2%, so a majority guesser lands around 41% (about 0.56 once I add the 15-point gap). With about 87 test rows, one row is about 1 point and a single seed can swing 5 to 8 points either way just from which rows land in the test set. Because the target has to hold on all three seeds, I set it a few points under where I expect the model to land (about 0.66 to 0.70, a guess based on the 88% agreement I measured when I relabeled 60 rows blind), not at it. The 15-point gap rule keeps the target honest if a different split makes one label bigger than the 41% I planned around.
+> **Revised in Unit 6:** On each of the three seeds, overall accuracy on the held-out test set is at least 0.71 and at least 10 percentage points above the always-predict-the-biggest-label baseline.
+>
+> **Why revised:** I changed the taxonomy from four labels to two, so the majority-class baseline changed from 0.414 for `hot_take` to 0.606 for `statement`. The new target requires at least 0.71 accuracy, which is more than 10 percentage points above the new baseline. This is a meaningful improvement over always predicting `statement` without requiring near-perfect classification. The target must hold across all three seeds to account for variation in the test split.
 
 ---
 
-## 2.
+## 2. Per-label F1
 
-Every label has an F1 of at least its own floor on every one of the three seeds: question 0.75, hot_take 0.55, analysis 0.40, reaction 0.25.
-
-**Why this target:**
-
-A model that always predicts hot_take scores an F1 of 0 on the other three labels, so each floor has to show the model has actually learned that label. question gets the highest floor because its cues are the clearest in my data (a title prompt, "?", "help me find this movie"). hot_take is my catch-all and the one the other labels leak into, so 0.55. analysis is the boundary I found hardest to label (a claim plus a named, checkable detail, versus an adjective), and it has only about 14 test rows, so one wrong prediction moves its F1 by 0.07 to 0.15. reaction has only 19 rows, so about 3 land in the test set today and its F1 can drop to 0 on a bad seed. Its 0.25 is still about 4 to 6 times what random guessing would score on a label that small, and I expect it to be the criterion I am most likely to miss. Together the floors weigh out to about 0.60, a little under criterion 1 because every label has to clear its floor on every seed.
+> **Revised in Unit 6:** Both `question` and `statement` must have an F1 score of at least 0.70 on each of the three seeds.
+>
+> **Why revised:** The original four-label model never predicted `analysis` or `reaction`, and those categories had F1 scores of zero. I combined `analysis`, `hot_take`, and `reaction` into `statement` because all three express content rather than primarily seeking information from the community. This removes the difficult distinctions between supported arguments, unsupported opinions, and immediate reactions. I chose 0.70 for both labels because the goal is to recognize both types of posts reasonably well, rather than achieve high overall accuracy by favoring the more common `statement` label. Requiring both labels to meet the floor prevents one category from being ignored.
 
 ---
 
-## 3.
+## 3. Dataset balance
 
-Every label has at least 40 labeled rows in labels.csv, and no label is more than 50% of the rows.
-
-**Why this target:**
-
-With a 70/15/15 split, 40 rows leaves 6 in the test set and about 28 in training, which is the fewest examples where a per-label score still means anything. Today the largest label is 41.2%, so the 50% ceiling passes. **The 40-row floor fails today:** reaction has 19 rows, so I need about 21 more reaction posts before the final training run. The 50% ceiling is stricter than the 70% the unit asks for, because at 50% a majority guesser already gets close to my accuracy target in criterion 1, and the criterion would stop telling me anything. I expect reaction to stay the label at risk, because only a small share of posts are written right after watching and mostly voice feeling.
+> **Revised in Unit 6:** Each label must have at least 150 examples in `labels.csv`, and neither label may account for more than 65% of the dataset.
+>
+> **Why revised:** The original minimum of 40 examples was designed for four labels, including the very small `reaction` category. After combining the labels, `question` has 228 examples and `statement` has 350, out of 578 total. The new minimum of 150 ensures that both categories have a substantial number of examples for training and evaluation. The 65% ceiling allows some natural imbalance while preventing one label from dominating the dataset. The current counts meet both requirements: `question` represents 39.4% and `statement` 60.6%.
 
 ---
 
-## 4.
+## 4. Labeling self-consistency
 
-When I relabel 30 randomly chosen posts at least 7 days after I first labeled them, I match my original label on at least 25 of the 30 (0.83).
-
-**Why this target:**
-
-I have no second labeler, so I test against myself, and the 7-day wait is there so I am not just remembering my answers. A classifier can't be more consistent than the labels it learns from, so this sets the most noise I'm willing to train on. When I relabeled 60 posts blind from the written rules on the same day, I matched 53 of 60 (88%), so I set 0.83 to allow about 5 points of drift over a week. I picked 0.83, not 0.90, because some boundaries are judgment calls (a verdict written as a question, hot_take versus reaction), and I tightened the rules after labeling my first rows. If I miss it, the fix is to tighten the definitions and relabel the rows that flipped, not to change the model. A second person labeling the same posts would be a stronger test, and I would swap one in if I find one.
+> **Revised in Unit 6:** When I relabel 30 randomly selected posts at least seven days after their original labeling, I must match my original labels on at least 25 of the 30 posts.
+>
+> **Why revised:** The new two-label taxonomy changes the labeling decision, so I need to check consistency using the revised definitions. The seven-day delay reduces the chance that I will simply remember my original decisions. A target of 25 out of 30 requires at least 83.3% agreement while allowing some borderline cases. This is especially relevant when deciding whether a post's primary purpose is to ask the community for something or to express a statement. I will use the same revised rules for the original labels and the delayed relabeling.
 
 ---
 
-## 5.
+## 5. Confidence separation
 
-On every one of the three seeds, the most confident half of my test predictions is at least 10 points more accurate than the least confident half.
-
-**Why this target:**
-
-If the model is going to sort posts for a person to skim, its confidence has to mean something, so the predictions it is sure about should be right more often than the ones it isn't. I compare the two halves because a fixed cutoff like 0.80 might leave me with only a handful of predictions to judge on an 87-row test set. Each half is about 43 predictions, so one wrong prediction moves a half by about 2 points and 10 points is a gap of about 4 predictions. That is the noisiest of my five criteria, so I picked a small gap because it has to hold on all three seeds. I expect question posts, with the clearest cues, to be most of the confident half.
+> **Revised in Unit 6:** On each of the three seeds, the most-confident half of the held-out predictions must be at least 10 percentage points more accurate than the least-confident half.
+>
+> **Why revised:** The classifier is intended to help someone sort posts before reading them, so confidence should help distinguish reliable predictions from uncertain ones. My original four-label results showed a promising gap between the most-confident and least-confident thirds, but the required half-versus-half comparison was not yet calculated. I am keeping the 10-percentage-point target because it is measurable on a test set of 87 posts: each half can contain 43 examples, leaving the middle prediction unused. The target must hold for all three seeds so that confidence separation is not just an occasional result.
 
 ---
 
