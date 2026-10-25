@@ -288,26 +288,26 @@ The labels follow `LABELING_RULES.md`, which applies four tests in a fixed order
 
 ## Run Log — Before
 
-| Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
-|---|---|---|---|---|---|
-| 1. Overall accuracy | ≥ 0.62 on every seed, and ≥ 15 points above the always-`hot_take` baseline (0.414) | 0.678 (+0.264 over baseline) | 0.724 (+0.310) | 0.690 (+0.276) | MET |
-| 2. Per-label F1 floors | question 0.75, hot_take 0.55, analysis 0.40, reaction 0.25 on every seed | question 0.771, hot_take 0.730, analysis 0.000, reaction 0.000 | question 0.816, hot_take 0.790, analysis 0.000, reaction 0.000 | question 0.795, hot_take 0.734, analysis 0.000, reaction 0.000 | MISSED |
-| 3. Balance | every label ≥ 40 rows, no label > 50% | smallest label 19 rows (reaction), largest 41.2% | same (fixed by the data) | same (fixed by the data) | MISSED |
-| 4. Self-consistency | ≥ 25 of 30 matches when I relabel 30 posts 7+ days later | not yet run | not yet run | not yet run | NOT YET TESTED |
-| 5. Confidence | most-confident half ≥ 10 points more accurate than least-confident half on every seed | _(fill in)_ | _(fill in)_ | _(fill in)_ | _(pending)_ |
+| Criterion              | Target                                                                                | Seed 42                                                        | Seed 7                                                         | Seed 2024                                                      | Verdict        |
+| ---------------------- | ------------------------------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------- |
+| 1. Overall accuracy    | ≥ 0.62 on every seed, and ≥ 15 points above the always-`hot_take` baseline (0.414)    | 0.678 (+0.264 over baseline)                                   | 0.724 (+0.310)                                                 | 0.690 (+0.276)                                                 | MET            |
+| 2. Per-label F1 floors | question 0.75, hot_take 0.55, analysis 0.40, reaction 0.25 on every seed              | question 0.771, hot_take 0.730, analysis 0.000, reaction 0.000 | question 0.816, hot_take 0.790, analysis 0.000, reaction 0.000 | question 0.795, hot_take 0.734, analysis 0.000, reaction 0.000 | MISSED         |
+| 3. Balance             | every label ≥ 40 rows, no label > 50%                                                 | smallest label 19 rows (reaction), largest 41.2%               | same (fixed by the data)                                       | same (fixed by the data)                                       | MISSED         |
+| 4. Self-consistency    | ≥ 25 of 30 matches when I relabel 30 posts 7+ days later                              | not yet run                                                    | not yet run                                                    | not yet run                                                    | NOT YET TESTED |
+| 5. Confidence          | most-confident half ≥ 10 points more accurate than least-confident half on every seed | _(fill in)_                                                    | _(fill in)_                                                    | _(fill in)_                                                    | _(pending)_    |
 
 ### Confusion matrix
 
 Seed 42:
 
 | true \ predicted | analysis | hot_take | reaction | question |
-|---|---|---|---|---|
-| **analysis** | 0 | 8 | 0 | 6 |
-| **hot_take** | 0 | 27 | 0 | 9 |
-| **reaction** | 0 | 1 | 0 | 2 |
-| **question** | 0 | 2 | 0 | 32 |
+| ---------------- | -------- | -------- | -------- | -------- |
+| **analysis**     | 0        | 8        | 0        | 6        |
+| **hot_take**     | 0        | 27       | 0        | 9        |
+| **reaction**     | 0        | 1        | 0        | 2        |
+| **question**     | 0        | 2        | 0        | 32       |
 
-**My biggest off-diagonal number, and what it means:** 9 real `hot_take` posts were called `question`, and only 2 real `question` posts were called `hot_take`, so on this pair the model leans toward `question`. The bigger problem is that it never predicted `analysis` or `reaction` at all. All 14 `analysis` posts went to `hot_take` (8) or `question` (6), and 2 of the 3 `reaction` posts went to `question`. 
+**My biggest off-diagonal number, and what it means:** 9 real `hot_take` posts were called `question`, and only 2 real `question` posts were called `hot_take`, so on this pair the model leans toward `question`. The bigger problem is that it never predicted `analysis` or `reaction` at all. All 14 `analysis` posts went to `hot_take` (8) or `question` (6), and 2 of the 3 `reaction` posts went to `question`.
 
 ---
 
@@ -339,55 +339,34 @@ Seed 42:
 
 ## Agreement Report
 
-<!-- Your rate against the staff set, and every disagreement adjudicated.
-
-     Remember you labelled these 30 under the STAFF taxonomy in
-     data/staff_taxonomy.md, not your own — so every argument below is made
-     from those definitions and those decision rules. -->
-
-**Agreement rate:** **_ / 30 = _**%
-
-<!-- Nobody grades this number. A 60% who argues every disagreement from the
-     stated rules beats a 95% who wrote "staff was right" nine times. Several
-     of the 30 were chosen because they're genuinely ambiguous — you should be
-     winning some of these. -->
+**Agreement rate:** ** 30/ 30 = 100**%
 
 **Disagreements**
 
-<!-- Three lines each: the post, both labels, and who you think is right and
-     why — grounded in the staff definitions you were both applying.
-
-     Then sort each into one of three piles:
-       (a) the rule covered it and I applied it loosely → a consistency problem
-       (b) the rule genuinely doesn't say               → a gap in the definitions
-       (c) the rule is ambiguous here and my reading is defensible → argue it.
-           This is a legitimate win.
-
-     Pile (a) is the one that matters most for your diagnosis: if you applied a
-     written rule two different ways on 30 posts, that is direct evidence about
-     what you did across your own 200. -->
+There were none, so there is nothing to adjudicate and none of the three piles ((a), (b), (c)) apply.
 
 **1.**
 
-> _The post:_
+> _The post:_ sp_014: "Times are down about 3% since the shoe rules changed, so obviously the shoes are the whole story and the sport has a problem."
 >
-> _Staff said / I said:_
+> _Staff said / I said:_ Staff said `hot_take`, I said `hot_take`. No disagreement.
 >
-> _My call, and why:_
+> _My call, and why:_ `hot_take`. The 3% is checkable, so it could be read as `analysis`. But the conclusion is already stated ("obviously... the whole story"), and the number is decoration on it. That is the staff's own rule 1 example, so I treated it as the clearest case of the rule.
 >
-> _Which pile:_
+> _Which pile:_ None, since we agreed. If I had called it `analysis`, it would have been pile (a): the rule covers it and I would have applied it loosely.
 
 **2.**
 
-> _The post:_
+> _The post:_ sp_010: "Three of us ran the same session on the same day, different shoes, within 10 seconds of each other over 5 miles. I'm not saying shoes do nothing, but whatever they do was smaller than the noise between three people."
 >
-> _Staff said / I said:_
+> _Staff said / I said:_ Staff said `analysis`, I said `analysis`. No disagreement.
 >
-> _My call, and why:_
+> _My call, and why:_ `analysis`. It is a tiny, hedged sample and could be read as a `hot_take` about shoes. But the observation is checkable and the claim rests on it. Rule 1 asks whether the fact carries the argument, not whether the evidence is strong.
 >
-> _Which pile:_
+> _Which pile:_ None, since we agreed. If I had called it `hot_take`, it would have been pile (c): the rule is ambiguous on weak evidence, and a reading could be defended.
 
 **What the pattern in my disagreements tells me:**
+With no disagreements, the check can't tell a labeling problem from a model problem for my own data, which is what it's supposed to do in Milestone 4. Three things limit what 30 of 30 means. First, staff marked 7 of the 30 posts as borderline (sp_005, sp_010, sp_014, sp_019, sp_020, sp_028, sp_029), and all 7 matched, which suggests the three rules are tight in this set. Second, the rule text's own example ("times are down 3% since 2017…") is almost the same as sp_014, so that post was close to given away. Third, 30 posts is a small set, and this is a running forum with three labels, not my horror-movie data with four. The result says nothing about how consistent my 578 labels are. The only consistency numbers I have for them are the 88% blind relabel from unit 5 (same labeler, so an upper bound) and the relabel check for criterion 4
 
 ---
 
