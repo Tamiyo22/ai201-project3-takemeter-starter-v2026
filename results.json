@@ -28,11 +28,12 @@
     }
   },
   "confidence": {
-    "mean_when_right": 0.8608271479606628,
-    "mean_when_wrong": 0.6314327120780945,
-    "accuracy_most_confident_third": 1.0,
-    "accuracy_least_confident_third": 0.6896551724137931,
-    "n_per_third": 29
+    "accuracy_most_confident_half": 1.0,
+    "accuracy_least_confident_half": 0.7906976744186046,
+    "confidence_gap": 0.2093023255813954,
+    "passes_criterion_5": true,
+    "n_per_half": 43,
+    "n_unused": 1
   },
   "device": "cpu",
   "device_name": "CPU",

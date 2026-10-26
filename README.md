@@ -329,7 +329,6 @@ I simplified the classification labels from four classes (analysis, hot_take, re
 **Which diagnosis pointed at it:**
 The original model struggled to learn the smaller classes, particularly analysis and reaction, which had F1 scores of zero. The class imbalance and difficulty distinguishing between similar types of statements suggested that merging related labels into a broader statement class could improve performance.
 
-#
 
 ### Run Log — After
 
@@ -338,8 +337,8 @@ The original model struggled to learn the smaller classes, particularly analysis
 | 1. Accuracy | >= 0.71 and >= 10 percentage points above baseline (0.606) | 0.885 | 0.885 | 0.862 | PASS |
 | 2. Per-class F1 | Both classes >= 0.70 | Statement: 0.904; Question: 0.857 | Statement: 0.906; Question: 0.853 | Statement: 0.889; Question: 0.818 | PASS |
 | 3. Class balance | At least 150 examples per class; neither class > 65% | Statement: 350 (60.6%); Question: 228 (39.4%) | Statement: 350 (60.6%); Question: 228 (39.4%) | Statement: 350 (60.6%); Question: 228 (39.4%) | PASS |
-| 4. Relabel consistency | Relabel 30 random posts after 7+ days; at least 25/30 labels match | Relabeled all data | Relabeled all data | Relabeled all data | FAIL |
-| 5. Confidence separation | Most-confident half is at least 10 percentage points more accurate than least-confident half | Not calculated | Not calculated | Not calculated | NOT VERIFIED |
+| 4. Relabel consistency | Relabel 30 random posts after 7+ days; at least 25/30 labels match | Relabeled all data; original labels unavailable for comparison | Relabeled all data; original labels unavailable for comparison | Relabeled all data; original labels unavailable for comparison | FAIL |
+| 5. Confidence separation | Most-confident half is at least 10 percentage points more accurate than least-confident half | Most: 1.000; Least: 0.791; Gap: 0.209 | Not calculated | Not calculated | PARTIAL |
 
 **Did it help, and how do I know:**
 
