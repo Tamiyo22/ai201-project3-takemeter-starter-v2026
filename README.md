@@ -324,34 +324,36 @@ With no disagreements, the check can't tell a labeling problem from a model prob
 ## The Improvement
 
 **What I changed:**
+I simplified the classification labels from four classes (analysis, hot_take, reaction, and question) to two classes: statement and question. I combined analysis, hot_take, and reaction into statement so the model could focus on distinguishing posts that express an opinion or analysis from posts that ask the community for information or recommendations.
 
 **Which diagnosis pointed at it:**
+The original model struggled to learn the smaller classes, particularly analysis and reaction, which had F1 scores of zero. The class imbalance and difficulty distinguishing between similar types of statements suggested that merging related labels into a broader statement class could improve performance.
+
+#
 
 ### Run Log — After
 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
-| --------- | ------ | ------- | ------ | --------- | ------- |
-| 1.        |        |         |        |           |         |
-| 2.        |        |         |        |           |         |
-| 3.        |        |         |        |           |         |
-| 4.        |        |         |        |           |         |
-| 5.        |        |         |        |           |         |
+|---|---|---|---|---|---|
+| 1. Accuracy | >= 0.71 and >= 10 percentage points above baseline (0.606) | 0.885 | 0.885 | 0.862 | PASS |
+| 2. Per-class F1 | Both classes >= 0.70 | Statement: 0.904; Question: 0.857 | Statement: 0.906; Question: 0.853 | Statement: 0.889; Question: 0.818 | PASS |
+| 3. Class balance | At least 150 examples per class; neither class > 65% | Statement: 350 (60.6%); Question: 228 (39.4%) | Statement: 350 (60.6%); Question: 228 (39.4%) | Statement: 350 (60.6%); Question: 228 (39.4%) | PASS |
+| 4. Relabel consistency | Relabel 30 random posts after 7+ days; at least 25/30 labels match | Relabeled all data | Relabeled all data | Relabeled all data | FAIL |
+| 5. Confidence separation | Most-confident half is at least 10 percentage points more accurate than least-confident half | Not calculated | Not calculated | Not calculated | NOT VERIFIED |
 
 **Did it help, and how do I know:**
 
-<!-- If it didn't, say so. Relabelling that didn't help is a genuinely
-     interesting result and earns full credit. -->
+Yes, the change substantially improved the model's ability to recognize both categories. All three seeds achieved accuracy between 86.2% and 88.5%, and both labels exceeded the required F1 score of 0.70 on every seed. The dataset also meets the revised balance requirements. However, the delayed relabeling criterion was not met, and confidence separation still needs to be calculated before the improvement can be considered successful on all five criteria.
 
 ---
 
 ## What's Still Broken
 
-<!-- For each criterion still missed: what you'd do, and why you stopped. -->
 
 **The gap between what I meant my labels to capture and what the model
 learned:**
 
-<!-- Two sentences. Your confusion matrix is the evidence. -->
+The confusion matrix for seed 42 shows that the model misclassified 6 statement posts as question and 4 question posts as statement, so it sometimes confuses expressing content with seeking information. Although the overall results are strong, these errors suggest that some posts have ambiguous purposes, and the model does not always distinguish the author's primary intent correctly.
 
 <!-- ═════════════════════════════════════════════════════════════════════
 
