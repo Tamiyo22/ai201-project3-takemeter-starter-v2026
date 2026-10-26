@@ -342,7 +342,7 @@ The original model struggled to learn the smaller classes, particularly analysis
 
 **Did it help, and how do I know:**
 
-Yes, the change substantially improved the model's ability to recognize both categories. All three seeds achieved accuracy between 86.2% and 88.5%, and both labels exceeded the required F1 score of 0.70 on every seed. The dataset also meets the revised balance requirements. However, the delayed relabeling criterion was not met, and confidence separation still needs to be calculated before the improvement can be considered successful on all five criteria.
+Yes, the change substantially improved the model's ability to recognize both categories. All three seeds achieved accuracy between 86.2% and 88.5%, and both labels exceeded the required F1 score of 0.70 on every seed. The dataset also meets the revised balance requirements. However, the delayed relabeling criterion was not met because I relabeled the entire dataset rather than preserving the original labels for comparison. Confidence separation passed for Seed 42, with a 20.9-percentage-point gap between the most-confident and least-confident halves, but it still needs to be calculated for Seeds 7 and 2024.
 
 ---
 
@@ -352,7 +352,7 @@ Yes, the change substantially improved the model's ability to recognize both cat
 **The gap between what I meant my labels to capture and what the model
 learned:**
 
-The confusion matrix for seed 42 shows that the model misclassified 6 statement posts as question and 4 question posts as statement, so it sometimes confuses expressing content with seeking information. Although the overall results are strong, these errors suggest that some posts have ambiguous purposes, and the model does not always distinguish the author's primary intent correctly.
+The Seed 42 confusion matrix shows that the model misclassified 6 statement posts as questions and 4 question posts as statements. This suggests that the model sometimes struggles to distinguish between posts that express an opinion or analysis and posts that seek information or recommendations. Although the overall results are strong, these errors show that the model does not always correctly identify the author's primary intent, particularly when a post's purpose is ambiguous.
 
 <!-- ═════════════════════════════════════════════════════════════════════
 
